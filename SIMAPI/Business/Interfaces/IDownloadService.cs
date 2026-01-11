@@ -1,0 +1,13 @@
+﻿using SIMAPI.Data.Dto;
+using SIMAPI.Data.Models;
+
+namespace SIMAPI.Business.Interfaces
+{
+    public interface IDownloadService
+    {
+        Task<Stream?> DownloadInstantActivationListAsync(GetReportRequest request);
+        Task<Stream?> DownloadDailyActivtionsAsync(GetReportRequest request);
+        Task<Stream?> DownloadActivtionAnalysisReportAsync(GetReportRequest request);
+    }
+
+}

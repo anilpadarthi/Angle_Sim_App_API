@@ -1,0 +1,445 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\interfaces\\idashboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\interfaces\\idashboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\repositories\\dashboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\repositories\\dashboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\interfaces\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\interfaces\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\interfaces\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\interfaces\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\interfaces\\ireportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\interfaces\\ireportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\repositories\\reportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\repositories\\reportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\repositories\\tokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\repositories\\tokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\repositories\\onfieldrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\repositories\\onfieldrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\repository\\interfaces\\itokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:repository\\interfaces\\itokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\data\\models\\report\\kpitargetreportmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:data\\models\\report\\kpitargetreportmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\data\\models\\dashboard\\userwisekpireportmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:data\\models\\dashboard\\userwisekpireportmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\data\\entities\\productbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:data\\entities\\productbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\data\\entities\\views\\vworders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:data\\entities\\views\\vworders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\controllers\\commissionstatementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:controllers\\commissionstatementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|c:\\uk_apps\\angle_app\\simapi\\simapi\\business\\helper\\pdf\\commissionstatementpdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03309073-7B27-49B4-88CE-DF7268A9CD2F}|SIMAPI.csproj|solutionrelative:business\\helper\\pdf\\commissionstatementpdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IDashboardRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Interfaces\\IDashboardRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Interfaces\\IDashboardRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Interfaces\\IDashboardRepository.cs",
+              "RelativeToolTip": "Repository\\Interfaces\\IDashboardRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T21:01:51.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DashboardRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\DashboardRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\DashboardRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\DashboardRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\DashboardRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T21:01:31.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DashboardService.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\DashboardService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\DashboardService.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\DashboardService.cs",
+              "RelativeToolTip": "Business\\Services\\DashboardService.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAYwHAAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T21:01:03.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IDashboardService.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Interfaces\\IDashboardService.cs",
+              "RelativeDocumentMoniker": "Business\\Interfaces\\IDashboardService.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Interfaces\\IDashboardService.cs",
+              "RelativeToolTip": "Business\\Interfaces\\IDashboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T21:00:42.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwDYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T21:00:28.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReportController.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\ReportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReportController.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\ReportController.cs",
+              "RelativeToolTip": "Controllers\\ReportController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:58:36.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ReportService.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\ReportService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\ReportService.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\ReportService.cs",
+              "RelativeToolTip": "Business\\Services\\ReportService.cs",
+              "ViewState": "AgIAAMoAAAAAAAAAAAAYwPQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:57:31.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IReportService.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Interfaces\\IReportService.cs",
+              "RelativeDocumentMoniker": "Business\\Interfaces\\IReportService.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Interfaces\\IReportService.cs",
+              "RelativeToolTip": "Business\\Interfaces\\IReportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:56:57.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IReportRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Interfaces\\IReportRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Interfaces\\IReportRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Interfaces\\IReportRepository.cs",
+              "RelativeToolTip": "Repository\\Interfaces\\IReportRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:56:24.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAcwLAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:54:53.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TokenRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\TokenRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\TokenRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\TokenRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\TokenRepository.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwDoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:54:32.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReportRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\ReportRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\ReportRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\ReportRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\ReportRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:54:06.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\ProductRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwFUAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:53:28.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\OrderRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAswCAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:52:49.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "OnFieldRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\OnFieldRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\OnFieldRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Repositories\\OnFieldRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\OnFieldRepository.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAAwHQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:52:25.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ITokenRepository.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Interfaces\\ITokenRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Interfaces\\ITokenRepository.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Interfaces\\ITokenRepository.cs",
+              "RelativeToolTip": "Repository\\Interfaces\\ITokenRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:51:58.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "KPITargetReportModel.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Models\\Report\\KPITargetReportModel.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\Report\\KPITargetReportModel.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Models\\Report\\KPITargetReportModel.cs",
+              "RelativeToolTip": "Data\\Models\\Report\\KPITargetReportModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:51:33.849Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UserWiseKPIReportModel.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Models\\Dashboard\\UserWiseKPIReportModel.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\Dashboard\\UserWiseKPIReportModel.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Models\\Dashboard\\UserWiseKPIReportModel.cs",
+              "RelativeToolTip": "Data\\Models\\Dashboard\\UserWiseKPIReportModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:50:38.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProductBundle.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Entities\\ProductBundle.cs",
+              "RelativeDocumentMoniker": "Data\\Entities\\ProductBundle.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Entities\\ProductBundle.cs",
+              "RelativeToolTip": "Data\\Entities\\ProductBundle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:49:54.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "VwOrders.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Entities\\Views\\VwOrders.cs",
+              "RelativeDocumentMoniker": "Data\\Entities\\Views\\VwOrders.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Data\\Entities\\Views\\VwOrders.cs",
+              "RelativeToolTip": "Data\\Entities\\Views\\VwOrders.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:49:26.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CommissionStatementController.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\CommissionStatementController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CommissionStatementController.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\CommissionStatementController.cs",
+              "RelativeToolTip": "Controllers\\CommissionStatementController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowEkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:48:41.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAYwGYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:48:13.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\TokenService.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\TokenService.cs",
+              "RelativeToolTip": "Business\\Services\\TokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:47:01.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\OrderService.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Services\\OrderService.cs",
+              "RelativeToolTip": "Business\\Services\\OrderService.cs",
+              "ViewState": "AgIAACIDAAAAAAAAAAAIwDkDAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:45:52.396Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Interfaces\\ITokenService.cs",
+              "RelativeDocumentMoniker": "Business\\Interfaces\\ITokenService.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Interfaces\\ITokenService.cs",
+              "RelativeToolTip": "Business\\Interfaces\\ITokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:45:28.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CommissionStatementPDF.cs",
+              "DocumentMoniker": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Helper\\PDF\\CommissionStatementPDF.cs",
+              "RelativeDocumentMoniker": "Business\\Helper\\PDF\\CommissionStatementPDF.cs",
+              "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Business\\Helper\\PDF\\CommissionStatementPDF.cs",
+              "RelativeToolTip": "Business\\Helper\\PDF\\CommissionStatementPDF.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAQwIAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T20:44:54.102Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
