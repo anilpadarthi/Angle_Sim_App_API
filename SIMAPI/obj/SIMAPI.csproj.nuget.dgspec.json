@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\SIMAPI.csproj": {}
+    "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj": {}
   },
   "projects": {
-    "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\SIMAPI.csproj": {
+    "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\SIMAPI.csproj",
+        "projectUniqueName": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj",
         "projectName": "SIMAPI",
-        "projectPath": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\SIMAPI.csproj",
+        "projectPath": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj",
         "packagesPath": "C:\\Users\\anilk\\.nuget\\packages\\",
-        "outputPath": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\obj\\",
+        "outputPath": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

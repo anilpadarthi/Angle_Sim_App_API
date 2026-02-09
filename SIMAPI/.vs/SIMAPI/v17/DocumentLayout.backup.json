@@ -132,7 +132,7 @@
               "RelativeDocumentMoniker": "Repository\\Interfaces\\IDashboardRepository.cs",
               "ToolTip": "C:\\UK_Apps\\Angle_App\\SimAPI\\SIMAPI\\Repository\\Interfaces\\IDashboardRepository.cs",
               "RelativeToolTip": "Repository\\Interfaces\\IDashboardRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-10T21:01:51.047Z",
               "EditorCaption": ""
@@ -435,7 +435,8 @@
               "RelativeToolTip": "Business\\Helper\\PDF\\CommissionStatementPDF.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAQwIAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T20:44:54.102Z"
+              "WhenOpened": "2026-01-10T20:44:54.102Z",
+              "EditorCaption": ""
             }
           ]
         }
