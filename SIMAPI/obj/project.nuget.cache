@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JPSXjPXvC7E=",
+  "dgSpecHash": "XdqZQZ6eocQ=",
   "success": true,
-  "projectFilePath": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj",
+  "projectFilePath": "C:\\UK_Apps\\Angle_App\\Angle_Sim_App_API\\SIMAPI\\SIMAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anilk\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\anilk\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
@@ -121,9 +121,9 @@
       "code": "NU1701",
       "level": "Warning",
       "message": "Package 'PDFsharp-MigraDoc-GDI 6.1.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj",
+      "projectPath": "C:\\UK_Apps\\Angle_App\\Angle_Sim_App_API\\SIMAPI\\SIMAPI.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj",
+      "filePath": "C:\\UK_Apps\\Angle_App\\Angle_Sim_App_API\\SIMAPI\\SIMAPI.csproj",
       "libraryId": "PDFsharp-MigraDoc-GDI",
       "targetGraphs": [
         "net8.0"

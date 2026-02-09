@@ -6551,11 +6551,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj",
+      "projectUniqueName": "C:\\UK_Apps\\Angle_App\\Angle_Sim_App_API\\SIMAPI\\SIMAPI.csproj",
       "projectName": "SIMAPI",
-      "projectPath": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\SIMAPI.csproj",
+      "projectPath": "C:\\UK_Apps\\Angle_App\\Angle_Sim_App_API\\SIMAPI\\SIMAPI.csproj",
       "packagesPath": "C:\\Users\\anilk\\.nuget\\packages\\",
-      "outputPath": "C:\\UK_Apps\\Angle_App\\AngleAPI\\SIMAPI\\obj\\",
+      "outputPath": "C:\\UK_Apps\\Angle_App\\Angle_Sim_App_API\\SIMAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
