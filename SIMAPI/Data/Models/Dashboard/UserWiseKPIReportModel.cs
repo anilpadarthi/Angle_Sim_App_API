@@ -12,7 +12,6 @@
         public int? Diff { get; set; }
         public decimal? Total { get; set; }
         public decimal? Bonus { get; set; }
-        public decimal? TotalCommission { get; set; }
     }
 
     public class UserWiseAccessoriesKPIReportModel
@@ -27,6 +26,5 @@
         public decimal? Diff { get; set; }
         public decimal? Total { get; set; }
         public decimal? Bonus { get; set; }
-        public decimal? TotalCommission { get; set; }
     }
 }

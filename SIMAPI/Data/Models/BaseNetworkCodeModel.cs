@@ -11,9 +11,5 @@
         public int? GIFFGAFF { get; set; }
         public int? VOXI { get; set; }
         public int? SMARTY { get; set; }
-        public int? VECTONE { get; set; }
-        public int? NOW { get; set; }
-        public int? DELIGHT { get; set; }
-        public int? TalkHome { get; set; }
     }
 }

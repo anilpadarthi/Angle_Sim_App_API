@@ -44,7 +44,7 @@ namespace SIMAPI.Controllers
         {
             request.userId = GetUserId;
             request.userRole = GetUser.userRole.RoleName;
-            //GetReportFromAndToDates(request);
+            // GetReportFromAndToDates(request);
             //DateTime currentDate = DateTime.Now;
             //DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
             //request.fromDate = firstDayOfMonth.AddMonths(-3).ToString("yyyy-MM-dd");

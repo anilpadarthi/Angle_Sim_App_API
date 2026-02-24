@@ -17,8 +17,10 @@ namespace SIMAPI.Repository.Interfaces
         Task<IEnumerable<ProductInfo>> GetProductListAsync(int categoryId, int subCategoryId);
         Task<IEnumerable<ProductInfo>> GetNewArrivalsAsync();
         Task<int> GetUnpaidOrdersCount(int shopId);
+        Task<int> GetUserIdFromShopId(int shopId);
         Task<IEnumerable<VwOrders>> GetOrdersByPagingAsync(GetPagedOrderListDto request);
         Task<IEnumerable<VwOrders>> DownloadOrderListAsync(GetPagedOrderListDto request);
+        Task<VwOrders> GetOrderInfoDetails(int orderId);
         Task<int> GetTotalOrdersCountAsync(GetPagedOrderListDto request);
         Task<int> GetTotalCountAsync(GetPagedSearch request);
         Task<IEnumerable<OrderItemModel>> GetOrderItemsAsync(int orderId);
@@ -32,9 +34,11 @@ namespace SIMAPI.Repository.Interfaces
         Task<IEnumerable<OrderPayment>> GetOrderPaymentsAsync(int orderId);
         Task<OrderPayment> GetOrderPaymentDetailsAsync(int orderPaymentDetailId);
         Task<int> VerifyAndUpdatePaidStatus(int orderId);
+        Task<int> VerifyAndUpdateHoldToPendingStatus(int shopId);
         Task<IEnumerable<OrderPayment>> GetPagedOrderPaymentsAsync(int orderId);
         Task<int> GetOrderNotificationCountAsync();
         Task<IEnumerable<ShopWalletHistory>> GetShopWalletHistoryByReferenceNumber(string referenceNumber,string transactionType);
+        Task<ShopWalletHistory> GetShopWalletHistoryByPaymentReferenceNumber(long paymentReferenceNumber);
 
     }
 }

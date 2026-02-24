@@ -11,8 +11,8 @@ namespace SIMAPI.Business.Services
         private readonly HttpClient _httpClient;
         public TopupWalletService(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClientFactory.CreateClient("AngleSims");
-            _httpClient.BaseAddress = new Uri("https://AngleSims.co.uk/");
+            _httpClient = httpClientFactory.CreateClient("LeapTel");
+            _httpClient.BaseAddress = new Uri("https://leap-tel.co.uk/");
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 

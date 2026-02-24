@@ -4,8 +4,8 @@ using SIMAPI.Business.Interfaces;
 using SIMAPI.Data.Dto;
 using SIMAPI.Data.Models;
 using SIMAPI.Repository.Interfaces;
-using SIMAPI.Repository.Repositories;
 using System.Net;
+using System.Text.Json;
 
 namespace SIMAPI.Business.Services
 {
@@ -22,8 +22,7 @@ namespace SIMAPI.Business.Services
         public async Task<CommonResponse> OnFieldCommissionListAsync(GetReportRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+            
                 var result = await _onFieldRepository.OnFieldCommissionListAsync(request);
                 if (result != null)
                 {
@@ -33,19 +32,14 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("report does not exist", HttpStatusCode.NotFound);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _onFieldRepository);
-            }
+           
             return response;
         }
 
         public async Task<CommonResponse> OnFieldActivationListAsync(GetReportRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+           
                 var result = await _onFieldRepository.OnFieldActivationListAsync(request);
                 if (result != null)
                 {
@@ -55,19 +49,14 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("report does not exist", HttpStatusCode.NotFound);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _onFieldRepository);
-            }
+           
             return response;
         }
 
         public async Task<CommonResponse> OnFieldGivenVSActivationListync(GetReportRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+           
                 var result = await _onFieldRepository.OnFieldGivenVSActivationListync(request);
                 if (result != null)
                 {
@@ -77,19 +66,14 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("report does not exist", HttpStatusCode.NotFound);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _onFieldRepository);
-            }
+          
             return response;
         }
 
         public async Task<CommonResponse> OnFieldSimConversionListAsync(GetReportRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+           
                 var result = await _onFieldRepository.OnFieldSimConversionListAsync(request);
                 if (result != null)
                 {
@@ -99,19 +83,14 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("report does not exist", HttpStatusCode.NotFound);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _onFieldRepository);
-            }
+          
             return response;
         }
 
         public async Task<CommonResponse> OnFieldShopVisitHistoryAsync(int shopId)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+          
                 var result = await _onFieldRepository.OnFieldShopVisitHistoryAsync(shopId);
                 if (result != null)
                 {
@@ -121,19 +100,14 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("report does not exist", HttpStatusCode.NotFound);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _onFieldRepository);
-            }
+           
             return response;
         }
 
         public async Task<CommonResponse> OnFieildCommissionWalletAmountsAsync(int shopId)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+          
                 var result = await _onFieldRepository.OnFieildCommissionWalletAmountsAsync(shopId);
                 if (result != null)
                 {
@@ -143,19 +117,14 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("report does not exist", HttpStatusCode.NotFound);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _onFieldRepository);
-            }
+          
             return response;
         }
 
         public async Task<CommonResponse> OnFieldCommissionWalletHistoryAsync(int shopId, string walletType)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+           
                 var result = await _onFieldRepository.OnFieldCommissionWalletHistoryAsync(shopId, walletType);
                 if (result != null)
                 {
@@ -165,11 +134,7 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("report does not exist", HttpStatusCode.NotFound);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _onFieldRepository);
-            }
+           
             return response;
         }
 

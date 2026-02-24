@@ -99,9 +99,9 @@ namespace SIMAPI.Repository.Repositories
             var list = await _context.Set<VwOrders>()
                 .Where(w => w.ShopId == shopId
                 && w.IsHide == false
-                && (w.OrderStatusId != (int)EnumOrderStatus.Paid && w.OrderStatusId != (int)EnumOrderStatus.CCA
+                && (w.OrderStatusId != (int)EnumOrderStatus.Paid &&  w.OrderStatusId != (int)EnumOrderStatus.CCA
                 && w.OrderStatusId != (int)EnumOrderStatus.CCM & w.OrderStatusId != (int)EnumOrderStatus.Cancelled)
-                && (w.PaymentMethod == EnumOrderPaymentMethod.COD.ToString()
+                && (w.PaymentMethod == EnumOrderPaymentMethod.COD.ToString() 
                 || w.PaymentMethod == EnumOrderPaymentMethod.AC.ToString()
                 || w.PaymentMethod == EnumOrderPaymentMethod.SaleOrReturn.ToString()
                 ))

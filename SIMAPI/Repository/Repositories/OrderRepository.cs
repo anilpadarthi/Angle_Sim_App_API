@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Azure.Core;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SIMAPI.Business.Enums;
 using SIMAPI.Data;
@@ -81,7 +82,7 @@ namespace SIMAPI.Repository.Repositories
         public async Task<IEnumerable<ProductInfo>> GetNewArrivalsAsync()
         {
             return await _context.Set<Product>()
-                       .Where(w => w.IsNewArrival == true && w.Status == 1)
+                       .Where(w => w.IsNewArrival == true && w.Status == 1 && w.IsOutOfStock == false)
                        .OrderBy(o => o.DisplayOrder)
                        .Select(p => new ProductInfo
                        {
@@ -103,11 +104,36 @@ namespace SIMAPI.Repository.Repositories
 
         public async Task<int> GetUnpaidOrdersCount(int shopId)
         {
+            var fromDate = new DateTime(2024, 1, 1);
             return await _context.Set<OrderInfo>().CountAsync(w => w.ShopId == shopId
+            && w.CreatedDate >= fromDate
             && w.OrderStatusTypeId != (int)EnumOrderStatus.Paid
             && w.OrderStatusTypeId != (int)EnumOrderStatus.Cancelled
+            && w.OrderStatusTypeId != (int)EnumOrderStatus.Defaulted
+            && w.OrderStatusTypeId != (int)EnumOrderStatus.Returned
+            && w.OrderStatusTypeId != (int)EnumOrderStatus.Hide
+            && w.OrderStatusTypeId != (int)EnumOrderStatus.Received
             && (w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.COD
-            || w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.AC));
+            || w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.AC
+            //|| w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.Free
+            //|| w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.Cash
+            //|| w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.BT
+            //|| w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.BankCheque
+            //|| w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.NewShopPromo
+            )
+            );
+        }
+
+        public async Task<int> GetUserIdFromShopId(int shopId)
+        {
+            return await (from sd in _context.Set<Shop>()
+                          join amap in _context.Set<AreaMap>()
+                              on sd.AreaId equals amap.AreaId
+                          where sd.ShopId == shopId
+                                && amap.IsActive == true
+                          select amap.UserId)
+                   .FirstOrDefaultAsync();
+
         }
 
         public async Task<IEnumerable<VwOrders>> GetOrdersByPagingAsync(GetPagedOrderListDto request)
@@ -255,7 +281,7 @@ namespace SIMAPI.Repository.Repositories
 
         public async Task<IEnumerable<OrderPayment>> GetOrderPaymentsAsync(int orderId)
         {
-            var result = await _context.Set<OrderPayment>().Where(w => w.OrderId == orderId).ToListAsync();
+            var result = await _context.Set<OrderPayment>().Where(w => w.OrderId == orderId && w.Status == 1).ToListAsync();
             return result;
         }
 
@@ -286,6 +312,15 @@ namespace SIMAPI.Repository.Repositories
             return await ExecuteStoredProcedureAsync("exec [dbo].[VerifyAndUpdatePaidStatus] @orderId", sqlParameters);
         }
 
+        public async Task<int> VerifyAndUpdateHoldToPendingStatus(int shopId)
+        {
+            var sqlParameters = new[]
+             {
+                new SqlParameter("@shopId", shopId),
+            };
+            return await ExecuteStoredProcedureAsync("exec [dbo].[VerifyAndUpdateHoldToPendingStatus] @shopId", sqlParameters);
+        }
+
         public async Task<IEnumerable<OrderDetail>> GetPagedOrderDetailsAsync(int orderId)
         {
             var result = await _context.Set<OrderDetail>().Where(w => w.OrderId == orderId).ToListAsync();
@@ -312,7 +347,12 @@ namespace SIMAPI.Repository.Repositories
 
         public async Task<IEnumerable<ShopWalletHistory>> GetShopWalletHistoryByReferenceNumber(string referenceNumber, string transactionType)
         {
-            return await _context.Set<ShopWalletHistory>().Where(w => w.TransactionType == transactionType && w.ReferenceNumber == referenceNumber).ToListAsync();
+            return await _context.Set<ShopWalletHistory>().Where(w => w.TransactionType == transactionType && w.ReferenceNumber == referenceNumber && w.IsActive == true).ToListAsync();
+        }
+
+        public async Task<ShopWalletHistory> GetShopWalletHistoryByPaymentReferenceNumber(long paymentReferenceNumber)
+        {
+            return await _context.Set<ShopWalletHistory>().Where(w => w.PaymentReferenceNumber == paymentReferenceNumber && w.IsActive == true).FirstOrDefaultAsync();
         }
 
 
@@ -324,6 +364,13 @@ namespace SIMAPI.Repository.Repositories
                 new SqlParameter("@filterId", filterId),
             };
             return (await ExecuteStoredProcedureAsync<OutstandingAmountModel>("exec [dbo].[Get_Accessories_Outstanding_Amounts] @filterType,@filterId", sqlParameters)).FirstOrDefault();
+        }
+
+        public async Task<VwOrders> GetOrderInfoDetails(int orderId)
+        {
+            return await _context.Set<VwOrders>()
+                .Where(w => w.OrderId == orderId)
+                .FirstOrDefaultAsync();
         }
 
 
@@ -356,17 +403,17 @@ namespace SIMAPI.Repository.Repositories
                 query = query.Where(w => w.ShopId == request.shopId.Value);
             }
 
-            if(request.loggedInUserRoleId == (int)EnumUserRole.Retailer
+            if (request.loggedInUserRoleId == (int)EnumUserRole.Retailer
                 && int.TryParse(request.shopName, out int tempShopId1))
             {
                 query = query.Where(w => w.ShopId == tempShopId1);
             }
 
-            else if(int.TryParse(request.shopName,out int tempShopId))
+            else if (int.TryParse(request.shopName, out int tempShopId))
             {
                 query = query.Where(w => w.OldShopId == tempShopId);
             }
-            else if(!string.IsNullOrEmpty(request.shopName))
+            else if (!string.IsNullOrEmpty(request.shopName))
             {
                 query = query.Where(w => w.ShopName.Contains(request.shopName));
             }
@@ -406,7 +453,7 @@ namespace SIMAPI.Repository.Repositories
                 query = query.Where(w => w.CreatedDate.Value < request.toDate.Value.AddDays(1));
             }
 
-            if (request.loggedInUserRoleId != (int)EnumUserRole.Admin 
+            if (request.loggedInUserRoleId != (int)EnumUserRole.Admin
                 && request.loggedInUserRoleId != (int)EnumUserRole.SuperAdmin
                 && request.loggedInUserRoleId != (int)EnumUserRole.CallCenter)
             {

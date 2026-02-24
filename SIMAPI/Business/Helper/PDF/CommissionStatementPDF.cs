@@ -1,4 +1,5 @@
-﻿using QuestPDF.Fluent;
+﻿using DocumentFormat.OpenXml.Office.CustomUI;
+using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using SIMAPI.Data.Dto;
@@ -167,14 +168,13 @@ namespace SIMAPI.Business.Helper.PDF
                                     columns.RelativeColumn(1);
                                 });
 
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.ShopName + "\n" + customer.Address1.Replace("\r", "").Replace("\n", "")).FontFamily("Calibri").FontSize(10).Bold();
+                                table.Cell().Element(CellNoBorderStyle).Text(customer.ShopName + "\n" + customer.Address1.Replace("\r", "").Replace("\n","")).FontFamily("Calibri").FontSize(10).Bold();
                                 table.Cell().Element(CellNoBorderStyle).Text("Shop Id :").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
                                 table.Cell().Element(CellNoBorderStyle).Text(customer.OldShopId.ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignRight();
 
                                 table.Cell().Element(CellNoBorderStyle).Text(customer.Address2.Replace("\r", "").Replace("\n", "")).FontFamily("Calibri").FontSize(10).Bold();
                                 table.Cell().Element(CellNoBorderStyle).Text("Area Code :").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
                                 table.Cell().Element(CellNoBorderStyle).Text(customer.AreaCode).FontFamily("Calibri").FontSize(10).Bold().AlignRight();
-                                                             
 
                                 table.Cell().Element(CellNoBorderStyle).Text(customer.AreaName).FontFamily("Calibri").FontSize(10).Bold();
                                 table.Cell().Element(CellNoBorderStyle).Text("Agent :").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
@@ -244,11 +244,13 @@ namespace SIMAPI.Business.Helper.PDF
                             column.Item().PaddingTop(5).Text("This is a Commission statement and is not a VAT document. If you are VAT registered VAT should be charged on your invoice at the appropriate rate.").AlignCenter().FontSize(10).FontFamily("Calibri");
                             if (customer.IsMobileShop == true)
                             {
-                                column.Item().PaddingTop(103).PaddingBottom(40).Text(customer.AreaCode + "/" + customer.OldShopId + "/" + customer.ShopCommissionHistoryId).AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
+                                column.Item().PaddingTop(103).PaddingBottom(40).Text(" ").AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
+                                //column.Item().PaddingTop(103).PaddingBottom(40).Text(customer.AreaCode + "/" + customer.OldShopId + "/" + customer.ShopCommissionHistoryId).AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
                             }
                             else
                             {
-                                column.Item().PaddingTop(60).PaddingBottom(40).Text(customer.AreaCode + "/" + customer.OldShopId + "/" + customer.ShopCommissionHistoryId).AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
+                                column.Item().PaddingTop(60).PaddingBottom(40).Text(" ").AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
+                                //column.Item().PaddingTop(60).PaddingBottom(40).Text(customer.AreaCode + "/" + customer.OldShopId + "/" + customer.ShopCommissionHistoryId).AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
                             }
 
                             if (request.isDisplayChequeInfo.HasValue && request.isDisplayChequeInfo.Value)

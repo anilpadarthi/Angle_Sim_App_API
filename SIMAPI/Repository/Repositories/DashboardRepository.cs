@@ -59,6 +59,17 @@ namespace SIMAPI.Repository.Repositories
             return await ExecuteStoredProcedureAsync<NetworkActivationReportModel>("exec [dbo].[Dashboard_Network_Wise_Activations] @date,@filterType,@filterId", sqlParameters);
         }
 
+        public async Task<IEnumerable<NetworkInstantActivationReportModel>> GetNetworkWiseInstantActivationsAsync(GetReportRequest request)
+        {
+            var sqlParameters = new[]
+            {
+                new SqlParameter("@date", request.fromDate),
+                new SqlParameter("@filterType", request.filterType ?? "" ),
+                new SqlParameter("@filterId", request.filterId ?? 0)
+            };
+            return await ExecuteStoredProcedureAsync<NetworkInstantActivationReportModel>("exec [dbo].[Dashboard_Network_Wise_Instant_Activations] @date,@filterType,@filterId", sqlParameters);
+        }
+
         public async Task<IEnumerable<UserWiseActivationReportModel>> GetUserWiseActivationsAsync(GetReportRequest request)
         {
             var sqlParameters = new[]
@@ -68,6 +79,17 @@ namespace SIMAPI.Repository.Repositories
                 new SqlParameter("@filterId", request.filterId ?? 0)
             };
             return await ExecuteStoredProcedureAsync<UserWiseActivationReportModel>("exec [dbo].[Dashboard_Agent_Wise_Activations] @date,@filterType,@filterId", sqlParameters);
+        }
+
+        public async Task<IEnumerable<UserWiseAccessoriesReportModel>> GetUserWiseAccessoriesSalesAsync(GetReportRequest request)
+        {
+            var sqlParameters = new[]
+              {
+                new SqlParameter("@date", request.fromDate),
+                new SqlParameter("@filterType", request.filterType ?? "" ),
+                new SqlParameter("@filterId", request.filterId ?? 0)
+            };
+            return await ExecuteStoredProcedureAsync<UserWiseAccessoriesReportModel>("exec [dbo].[Dashboard_Agent_Wise_Accessories] @date,@filterType,@filterId", sqlParameters);
         }
 
         public async Task<IEnumerable<AreaWiseActivationReportModel>> GetAreaWiseActivationsAsync(GetReportRequest request)

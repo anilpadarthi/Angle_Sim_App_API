@@ -88,6 +88,7 @@ namespace SIMAPI.Data
             modelBuilder.Entity<OrderHistory>();
             modelBuilder.Entity<OrderPayment>();
             modelBuilder.Entity<VwOrders>().HasNoKey();
+            modelBuilder.Entity<VwShops>().HasNoKey();
             modelBuilder.Entity<VwOrderHistory>().HasNoKey();
             modelBuilder.Entity<VwOrderPaymentHistory>().HasNoKey();
             modelBuilder.Entity<SupplierTransaction>();
@@ -139,6 +140,7 @@ namespace SIMAPI.Data
             modelBuilder.Entity<AreaWiseActivationReportModel>().HasNoKey();
             modelBuilder.Entity<ManagerWiseActivationReportModel>().HasNoKey();
             modelBuilder.Entity<NetworkActivationReportModel>().HasNoKey();
+            modelBuilder.Entity<NetworkInstantActivationReportModel>().HasNoKey();
             modelBuilder.Entity<UserWiseActivationReportModel>().HasNoKey();
             modelBuilder.Entity<UserWiseKPIReportModel>().HasNoKey();
             modelBuilder.Entity<CommissionShopListModel>().HasNoKey();
@@ -190,6 +192,11 @@ namespace SIMAPI.Data
             modelBuilder.Entity<SupplierListModel>().HasNoKey();
             modelBuilder.Entity<ProductInfo>().HasNoKey();
             modelBuilder.Entity<ProductBundleDto>().HasNoKey();
+            modelBuilder.Entity<AccessoriesKPITargetReportModel>().HasNoKey();
+            modelBuilder.Entity<UserWiseAccessoriesKPIReportModel>().HasNoKey();
+            modelBuilder.Entity<UserWiseAccessoriesReportModel>().HasNoKey();
+            modelBuilder.Entity<InstantActivationDetailsReportModel>().HasNoKey();
+            modelBuilder.Entity<LookupResult>().HasNoKey();
 
 
 

@@ -11,6 +11,11 @@ namespace SIMAPI.Data.Models.Login
         public string? Longitude { get; set; }
     }
     public class RefreshRequestDto { public string RefreshToken { get; set; } }
+
+    public class TokenRequest
+    {
+        public string RefreshToken { get; set; }
+    }
     public class AuthResponseDto
     {
         public string? AccessToken { get; set; }
@@ -34,6 +39,7 @@ namespace SIMAPI.Data.Models.Login
         public string? designation { get; set; }
         public string? userImage { get; set; }
         public string? doj { get; set; }
+        public bool IsSystemAccess { get; set; }
         public UserRole userRole { get; set; }
     }
 }

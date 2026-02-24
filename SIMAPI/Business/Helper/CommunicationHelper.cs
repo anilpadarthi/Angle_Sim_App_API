@@ -1,4 +1,5 @@
-﻿using SIMAPI.Business.Helper.PDF;
+﻿using DocumentFormat.OpenXml.VariantTypes;
+using SIMAPI.Business.Helper.PDF;
 using SIMAPI.Data.Models.OrderListModels;
 using System.Net;
 using System.Net.Mail;
@@ -18,22 +19,22 @@ namespace SIMAPI.Business.Helper
             if (string.IsNullOrEmpty(ownerName) || ownerName == "NULL")
                 ownerName = shopName;
 
-            string activationLink = "https://app.anglesims.co.uk/retailer/login";
+            string activationLink = "https://app.leap-tel.com/retailer/login";
             StringBuilder strBody = new StringBuilder();
             strBody.Append("<p>Greetings, Mr " + ownerName + ", </p>");
-            strBody.Append("<p>Thank you for signing up. Here is all the information you need for managing your AngleSims account online. </p><br />");
+            strBody.Append("<p>Thank you for signing up. Here is all the information you need for managing your leap-tel account online. </p><br />");
             strBody.Append("<p>Shop ID :" + shopId + "</p>");
             strBody.Append("<p>Shop Email :" + shopEmail + "</p>");
             strBody.Append("<p>PASSWORD    :" + password + "</p>");
-            strBody.Append("<p>To login to your AngleSims account, Please <a href='" + activationLink + "'>" + "Click" + " </a> here </p>");
+            strBody.Append("<p>To login to your leap-tel account, Please <a href='" + activationLink + "'>" + "Click" + " </a> here </p>");
             strBody.Append("<p>Have a great day!</p><br />");
             strBody.Append("<p>Customer Services Team</p>");
-            strBody.Append("<p>AngleSims</p>");
+            strBody.Append("<p>leap-tel</p>");
             strBody.Append("<p>03330119880</p>");
 
 
             MailMessage objmail = new MailMessage();
-            objmail.Subject = "AngleSims – Your Online Account is Live Now!";
+            objmail.Subject = "LEAP – Your Online Account is Live Now!";
             objmail.Body = strBody.ToString();
             objmail.From = new MailAddress(EmailSettings.welcomeMail);
 
@@ -68,18 +69,18 @@ namespace SIMAPI.Business.Helper
                 ownerName = shopName;
 
             StringBuilder strBody = new StringBuilder();
-            strBody.Append("<div style='width:100%;background-color:#F70000;color:white;text-align:center;'><h1>Welcome To AngleSims </h1></div>");
+            strBody.Append("<div style='width:100%;background-color:#F70000;color:white;text-align:center;'><h1>Welcome To Leap </h1></div>");
             strBody.Append("<p>Greetings, Mr " + ownerName + "!! </p>");
-            strBody.Append("<p>Thank you for choosing AngleSims as your Pay As You Go SIM Cards and Mobile Accessories supplier. You have now joined over 20000 retailers just like you who trust us with managing their SIM Card and Mobile Accessories business segment. We constantly endeavour to build a great relationship with our network partners and retailers and strive towards providing the best service to our customers </p>");
-            strBody.Append("<p>We encourage you to discover the great promotions and offers current available by contacting your Local leapAngleSims Executive today!</p>");
-            strBody.Append("<p>We hope that you take this opportunity with AngleSims to reap great benefits, commissions and services to help your retail SIM business to great heights.</p>");
+            strBody.Append("<p>Thank you for choosing leap-tel as your Pay As You Go SIM Cards and Mobile Accessories supplier. You have now joined over 20000 retailers just like you who trust us with managing their SIM Card and Mobile Accessories business segment. We constantly endeavour to build a great relationship with our network partners and retailers and strive towards providing the best service to our customers </p>");
+            strBody.Append("<p>We encourage you to discover the great promotions and offers current available by contacting your Local leap-tel Executive today!</p>");
+            strBody.Append("<p>We hope that you take this opportunity with leap-tel to reap great benefits, commissions and services to help your retail SIM business to great heights.</p>");
             strBody.Append("<p>Your online account details are sent on a separate email, please check your Junk or Spam mailboxes if you are unable to find the email in your inbox. </p><br />");
             strBody.Append("<p>Have a great day!</p><br />");
             strBody.Append("<p>Customer Services Team</p>");
-            strBody.Append("<p>AngleSims</p>");
+            strBody.Append("<p>leap-tel</p>");
             strBody.Append("<p>03330119880</p>");
             MailMessage objmail = new MailMessage();
-            objmail.Subject = "Welcome to AngleSims! ";
+            objmail.Subject = "Welcome to LEAP! ";
             objmail.Body = strBody.ToString();
             objmail.From = new MailAddress(EmailSettings.welcomeMail);
 
@@ -104,11 +105,11 @@ namespace SIMAPI.Business.Helper
             if (string.IsNullOrEmpty(ownerName) || ownerName == "NULL")
                 ownerName = shopName;
 
-            string activationLink = "https://app.angleSims.co.uk/retailer/login?EmailId=" + shopGuid;
+            string activationLink = "https://app.leap-tel.com/retailer/login?EmailId=" + shopGuid;
 
             StringBuilder strBody = new StringBuilder();
             strBody.Append("<p>Greetings, Mr " + ownerName + ", </p>");
-            strBody.Append("<p>Thank you for signing up. Here is all the information you need for managing your AngleSims account online. </p><br />");
+            strBody.Append("<p>Thank you for signing up. Here is all the information you need for managing your leap-tel account online. </p><br />");
             strBody.Append("<p>Shop ID :" + shopId + "</p>");
             strBody.Append("<p>PASSWORD    :" + password + "</p>");
             strBody.Append("<p>Click on the below link to login to your Leap Tel account? </p>");
@@ -117,12 +118,12 @@ namespace SIMAPI.Business.Helper
             strBody.Append("<p>For other services such as Mobile unlocking, Air ticketing  and Online mobile top-up services, please click here " + activationLink + "</p><br />");
             strBody.Append("<p>Have a great day!</p><br />");
             strBody.Append("<p>Customer Services Team</p>");
-            strBody.Append("<p>AngleSims</p>");
+            strBody.Append("<p>leap-tel</p>");
             strBody.Append("<p>03330119880</p>");
 
 
             MailMessage objmail = new MailMessage();
-            objmail.Subject = "AngleSims : Your Online Account is Live Now!";
+            objmail.Subject = "leap-tel : Your Online Account is Live Now!";
             objmail.Body = strBody.ToString();
             objmail.From = new MailAddress(EmailSettings.infoMail);
 
@@ -144,7 +145,7 @@ namespace SIMAPI.Business.Helper
                 toMail += "," + email;
 
 
-            //string activationLink = "https://app.AngleSims.co.uk/retailer/login?EmailId=" + shopGuid;
+            //string activationLink = "https://app.leap-tel.com/retailer/login?EmailId=" + shopGuid;
 
             //StringBuilder strBody = new StringBuilder();
             //strBody.Append("<p>Greetings, Mr " + ownerName + ", </p>");
@@ -237,8 +238,8 @@ namespace SIMAPI.Business.Helper
             file.Seek(0, SeekOrigin.Begin);
             Attachment data = new Attachment(file, "Invoice_" + invoiceDetailModel.OrderId + ".pdf", "application/pdf");
             ContentDisposition disposition = data.ContentDisposition;
-            disposition.CreationDate = System.DateTime.Now;
-            disposition.ModificationDate = System.DateTime.Now;
+            disposition.CreationDate = DateTime.Now;
+            disposition.ModificationDate = DateTime.Now;
             disposition.DispositionType = DispositionTypeNames.Attachment;
             objmail.Attachments.Add(data);//Attach the file  
 
@@ -255,8 +256,142 @@ namespace SIMAPI.Business.Helper
                 toMail += "," + model.ShopEmail;
 
             MailMessage objmail = new MailMessage();
-            objmail.Subject = "Leap_Payment_Receipt_" + model.OrderId;
-            objmail.Body = "Your payment has been confirmed.";
+            objmail.Subject = "Payment Receipt - Order #" + model.OrderId;
+
+            StringBuilder strBody = new StringBuilder();
+
+            strBody.Append(@"
+            <html>
+            <body style='font-family: Arial, sans-serif; background-color:#f4f4f4; padding:20px;'>
+            
+            <div style='max-width:700px; margin:0 auto; background:#ffffff; border:1px solid #ddd;'>
+
+            <!-- Header -->
+            <div style='background-color:#f37021; color:#ffffff; padding:15px; text-align:center; font-size:24px; font-weight:bold;'>
+                PAYMENT RECEIPT
+            </div>
+
+            <!-- Top Details Section -->
+            <div style='padding:20px;'>
+
+                <table width='100%' style='margin-bottom:20px;'>
+                    <tr>
+                        <td>                            
+                            <strong>Date:</strong> " + model.PaymentDate.ToString("dd/MM/yyyy") + @"<br/>
+                            <strong>Order No:</strong> <span style='color:#f37021; font-weight:bold;'>ORD - " + model.OrderId + @"</span>
+                        </td>
+                        <td style='text-align:right;'>
+                            <strong>Billed To:</strong><br/>
+                            " + model.CustomerName + @"<br/>
+                            " + (model.ShopEmail ?? "") + @"
+                        </td>
+                    </tr>
+                </table>
+
+            <!-- Payment Details Table -->
+            <table width='100%' cellpadding='10' cellspacing='0' style='border-collapse:collapse; border:1px solid #ddd;'>
+
+                <tr style='background-color:#f9e2d3; font-weight:bold;'>
+                    <td>Description</td>
+                    <td style='text-align:right;'>Amount</td>
+                </tr>
+
+                <tr>
+                    <td>Payment for Order #ORD-" + model.OrderId + @"</td>
+                    <td style='text-align:right;'>£" + model.AmountPaid.ToString("N2") + @"</td>
+                </tr>
+
+                <tr>
+                    <td>Payment Method</td>
+                    <td style='text-align:right;'>" + model.PaymentMethod + @"</td>
+                </tr>
+
+                <tr>
+                    <td>Transaction ID</td>
+                    <td style='text-align:right;'>" + model.ReceiptNo + @"</td>
+                </tr>
+
+                <!-- Total Row -->
+                <tr style='background-color:#f9e2d3; font-weight:bold;'>
+                    <td>Total Amount Paid:</td>
+                    <td style='text-align:right;'>£" + model.AmountPaid.ToString("N2") + @"</td>
+                </tr>
+
+            </table>
+
+            <br/>
+
+            <p>We are pleased to confirm that your payment has been successfully received.</p>
+            <p>If you require any further assistance, please feel free to contact our support team.</p>
+
+            <br/>
+
+            <p style='margin:2px;'>Warm regards,</p>
+            <p style='margin:2px;'><strong>Customer Services Team</strong></p>
+            <p style='margin:2px;'>Leap-Tel</p>
+            <p style='margin:2px;'>03330119880</p>
+
+            </div>
+            </div>
+            
+            </body>
+            </html>
+            ");
+
+            objmail.Body = strBody.ToString();
+            objmail.IsBodyHtml = true;
+
+
+            //MailMessage objmail = new MailMessage();
+            //objmail.Subject = "Payment Received Confirmation - Order#" + model.OrderId;
+
+            //StringBuilder strBody = new StringBuilder();
+
+            //strBody.Append("<p>Dear " + model.CustomerName + ",</p>");
+
+            //strBody.Append("<p style='margin:2px;'>We are happy to inform you that we have successfully received your payment.</p>");
+
+            //strBody.Append("<p><strong>Payment Summary</strong></p>");
+
+            //strBody.Append("<table border='1' cellpadding='5' cellspacing='0' style='border-collapse: collapse; width: 100%; text-align: center; font-family: Arial;'>");
+
+            //// Header Row
+            //strBody.Append("<tr style='background-color:#f2f2f2;'>");
+            //strBody.Append("<th style='text-align:center;'>Order Number</th>");
+            //strBody.Append("<th style='text-align:center;'>Amount Paid</th>");
+            //strBody.Append("<th style='text-align:center;'>Payment Date</th>");
+            //strBody.Append("<th style='text-align:center;'>Payment Mode</th>");
+            //strBody.Append("<th style='text-align:center;'>Receipt Number</th>");
+            //strBody.Append("</tr>");
+
+            //// Data Row
+            //strBody.Append("<tr>");
+            //strBody.Append("<td style='text-align:center;'>" + model.OrderId + "</td>");
+            //strBody.Append("<td style='text-align:center;'>£" + model.AmountPaid + "</td>");
+            //strBody.Append("<td style='text-align:center;'>" + model.PaymentDate + "</td>");
+            //strBody.Append("<td style='text-align:center;'>" + model.PaymentMethod + "</td>");
+            //strBody.Append("<td style='text-align:center;'>" + model.ReceiptNo + "</td>");
+            //strBody.Append("</tr>");
+
+            //strBody.Append("</table>");
+
+            //strBody.Append("<p style='margin:5px;'>&nbsp;</p>");
+            //strBody.Append("<p style='margin:2px;'>We appreciate your prompt settlement and thank you for your continued trust in our services.</p>");
+
+            //strBody.Append("<p style='margin:2px;'>If you require any further assistance, invoice copies, or additional documentation, please feel free to contact us.</p>");
+
+            //strBody.Append("<p style='margin:2px;'>Thank you for your business.</p>");
+
+            //// Reduced spacing section
+            //strBody.Append("<p style='margin:5px;'>&nbsp;</p>");
+            //strBody.Append("<p style='margin:2px;'>Warm regards,</p>");
+            //strBody.Append("<p style='margin:2px;'>Customer Services Team</p>");
+            //strBody.Append("<p style='margin:2px;'>Leap-Tel</p>");
+            //strBody.Append("<p style='margin:2px;'>03330119880</p>");
+
+
+
+            //objmail.Body = strBody.ToString();
             objmail.From = new MailAddress(EmailSettings.invoiceMail);
 
 
@@ -265,18 +400,17 @@ namespace SIMAPI.Business.Helper
                 if (str.Contains("@"))
                     objmail.To.Add(new MailAddress(str));
             }
-            var invoice = new PDFInvoice().GenerateReceipt(model);
-            MemoryStream file = new MemoryStream(invoice);
+            //var invoice = new PDFInvoice().GenerateReceipt(model);
+            //MemoryStream file = new MemoryStream(invoice);
 
-            file.Seek(0, SeekOrigin.Begin);
-            Attachment data = new Attachment(file, "Payment_Receipt_" + model.OrderId + ".pdf", "application/pdf");
-            ContentDisposition disposition = data.ContentDisposition;
-            disposition.CreationDate = System.DateTime.Now;
-            disposition.ModificationDate = System.DateTime.Now;
-            disposition.DispositionType = DispositionTypeNames.Attachment;
-            objmail.Attachments.Add(data);//Attach the file  
+            //file.Seek(0, SeekOrigin.Begin);
+            //Attachment data = new Attachment(file, "Payment_Receipt_" + model.OrderId + ".pdf", "application/pdf");
+            //ContentDisposition disposition = data.ContentDisposition;
+            //disposition.CreationDate = DateTime.Now;
+            //disposition.ModificationDate = DateTime.Now;
+            //disposition.DispositionType = DispositionTypeNames.Attachment;
+            //objmail.Attachments.Add(data);//Attach the file  
 
-            objmail.IsBodyHtml = true;
             NetworkCredential credentioals = new NetworkCredential(EmailSettings.invoiceMail, EmailSettings.invoiceMailPwd);
             SendEmail(objmail, credentioals);
         }

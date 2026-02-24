@@ -7,6 +7,7 @@ namespace SIMAPI.Data.Models.Report
     {
         public IEnumerable<SalaryDetailsModel> salaryDetailsModel { get; set; }
         public IEnumerable<SalarySimCommissionDetailsModel> salarySimCommissionDetailsModel { get; set; }
+        public IEnumerable<SalarySimCommissionDetailsModel> instantAndVodafoneVoxiList { get; set; }
         public IEnumerable<SalaryAccessoriesCommissionDetailsModel> salaryAccessoriesCommissionDetailsModel { get; set; }
         public IEnumerable<UserSalaryTransaction> salaryTransactions { get; set; }
     }
@@ -34,7 +35,8 @@ namespace SIMAPI.Data.Models.Report
     {
         public string? SaleType { get; set; }
         public decimal? Rate { get; set; }
-        public decimal? TotalSale { get; set; }
+        public decimal? SaleAmount { get; set; }
+        public decimal? CollectedAmount { get; set; }
         public decimal? Total { get; set; }
     }
 

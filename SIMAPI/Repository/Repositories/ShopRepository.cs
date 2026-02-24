@@ -1,6 +1,4 @@
-﻿using Azure.Core;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SIMAPI.Business.Enums;
 using SIMAPI.Data;
@@ -23,12 +21,19 @@ namespace SIMAPI.Repository.Repositories
             return await _context.Set<Shop>()
                 .MaxAsync(w => w.OldShopId);
         }
-
-        public async Task<IEnumerable<Shop>> GetAllShopsAsync(int? areaId)
+        public async Task<IEnumerable<VwShops>> GetAllShopsAsync(int? areaId)
         {
-            return await _context.Set<Shop>()
-                .Where(w => w.Status == 1 && w.AreaId == areaId)
+            if (areaId == null || areaId == 0)
+            {
+                return await _context.Set<VwShops>()
                 .ToListAsync();
+            }
+            else
+            {
+                return await _context.Set<VwShops>()
+                    .Where(w => w.AreaId == areaId)
+                    .ToListAsync();
+            }
         }
 
         public async Task<IEnumerable<ShopContact>> GetShopContactsAsync(int shopId)
@@ -153,6 +158,7 @@ namespace SIMAPI.Repository.Repositories
             userTrack.WorkType = "ShopVisit";
             userTrack.Latitude = request.Latitude;
             userTrack.Longitude = request.Longitude;
+            userTrack.Comments = request.Comments;
             _context.Add(userTrack);
             await _context.SaveChangesAsync();
             return true;
@@ -211,7 +217,7 @@ namespace SIMAPI.Repository.Repositories
 
         }
 
-        public async Task<IEnumerable<ShopCommissionChequeDto>> GetShopCommissionChequesAsync(int shopId,string mode)
+        public async Task<IEnumerable<ShopCommissionChequeDto>> GetShopCommissionChequesAsync(int shopId, string mode)
         {
             var paramList = new[]
             {
@@ -228,57 +234,54 @@ namespace SIMAPI.Repository.Repositories
                  .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Shop>> GlobalShopSearchAsync(GetLookupRequest request)
+        public async Task<IEnumerable<VwShops>> GlobalShopSearchAsync(GetLookupRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.searchText))
-                return Enumerable.Empty<Shop>();
+                return Enumerable.Empty<VwShops>();
 
             string normalized = request.searchText.Trim().ToUpper();
+            string status = Convert.ToString((short)EnumStatus.Active);
             bool isNumeric = int.TryParse(request.searchText, out int shopId);
             if (request.userRoleId == (int)EnumUserRole.Manager)
             {
-                return await (from s in _context.Set<Shop>()
-                              join a in _context.Set<Area>() on s.AreaId equals a.AreaId
-                              join b in _context.Set<AreaMap>()
-                              on a.AreaId equals b.AreaId into temp1
-                              from t1 in temp1
+                return await (from s in _context.Set<VwShops>()                              
                               join c in _context.Set<UserMap>()
-                              on t1.UserId equals c.UserId into temp2
+                              on s.UserId equals c.UserId into temp2
                               from t2 in temp2.DefaultIfEmpty()
-                              where a.Status == (short)EnumStatus.Active && t1.IsActive == true && t2.IsActive == true
-                              && (t1.UserId == request.userId || t2.MonitorBy == request.userId)
+                              where s.Status == status && t2.IsActive == true
+                              && (s.UserId == request.userId || t2.MonitorBy == request.userId)
                               && (isNumeric
                             ? (s.OldShopId == shopId)
-                            : s.ShopName.ToUpper().Contains(normalized))
+                            : ((s.ShopName != null && s.ShopName.ToUpper().Contains(normalized))
+                               || (s.PostCode != null && s.PostCode.ToUpper().Contains(normalized))))
                               select s).ToListAsync();
             }
             else if (request.userRoleId == (int)EnumUserRole.Agent)
             {
-                return await (from s in _context.Set<Shop>()
-                              join a in _context.Set<Area>() on s.AreaId equals a.AreaId
-                              join b in _context.Set<AreaMap>()
-                              on a.AreaId equals b.AreaId
-                              where a.Status == (short)EnumStatus.Active && b.IsActive == true
-                              && b.UserId == request.userId
+                return await (from s in _context.Set<VwShops>()
+                              where s.Status == status
+                              && s.UserId == request.userId
                               && (isNumeric
                             ? (s.OldShopId == shopId)
-                            : s.ShopName.ToUpper().Contains(normalized))
+                            : ((s.ShopName != null && s.ShopName.ToUpper().Contains(normalized))
+                               || (s.PostCode != null && s.PostCode.ToUpper().Contains(normalized))))
                               select s).ToListAsync();
             }
             else if (request.userRoleId == (int)EnumUserRole.Admin
                 || request.userRoleId == (int)EnumUserRole.SuperAdmin
                 || request.userRoleId == (int)EnumUserRole.CallCenter)
             {
-                return await _context.Set<Shop>()
-                             .Where(w => w.Status == (short)EnumStatus.Active
+                return await _context.Set<VwShops>()
+                             .Where(w => w.Status == status
                              && (isNumeric
                             ? (w.OldShopId == shopId)
-                            : w.ShopName.ToUpper().Contains(normalized)))
-                             .ToListAsync();
+                            : ((w.ShopName != null && w.ShopName.ToUpper().Contains(normalized))
+                               || (w.PostCode != null && w.PostCode.ToUpper().Contains(normalized))))).ToListAsync();
+
             }
             else
             {
-                return Enumerable.Empty<Shop>();
+                return Enumerable.Empty<VwShops>();
             }
         }
 

@@ -1,8 +1,6 @@
 ﻿using SIMAPI.Data;
 using SIMAPI.Data.Entities;
 using SIMAPI.Repository.Interfaces;
-using System.Net;
-using System.Text.Json;
 
 namespace SIMAPI.Repository.Repositories
 {
@@ -13,11 +11,11 @@ namespace SIMAPI.Repository.Repositories
         {
         }
 
-        public async Task LogError(Exception ex)
+        public async Task LogError(Exception ex, string optional = "")
         {
             var errorLog = new ErrorInfo
             {
-                ErrorMessage = ex.Message,
+                ErrorMessage = ex.Message + optional,
                 StackTrace = ex.StackTrace,
                 Method = ex.Source,
                 CreatedDate = DateTime.Now

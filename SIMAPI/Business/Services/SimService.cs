@@ -26,57 +26,24 @@ namespace SIMAPI.Business.Services
         public async Task<CommonResponse> AllocateSimsAsync(GetSimInfoRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
+            if (request.imeiNumbers?.Length > 0 && request.shopId.HasValue)
             {
-                if (request.imeiNumbers?.Length > 0 && request.shopId.HasValue)
+                var imeiTable = new DataTable();
+                imeiTable.Columns.Add("ImeiNumber", typeof(string));
+                foreach (var imei in request.imeiNumbers)
                 {
-                    var imeiTable = new DataTable();
-                    imeiTable.Columns.Add("ImeiNumber", typeof(string));
-                    foreach (var imei in request.imeiNumbers)
+                    if (!string.IsNullOrEmpty(imei))
                     {
-                        if (!string.IsNullOrEmpty(imei))
-                        {
-                            imeiTable.Rows.Add(imei);
-                        }
+                        imeiTable.Rows.Add(imei);
                     }
-                    var allocatedCount = await _simRepository.AllocateSimsAsync(request.shopId.Value, request.loggedInUserId.Value, imeiTable);
-
-                    //foreach (var imei in request.imeiNumbers)
-                    //{
-                    //    var simDetails = await _simRepository.GetSimDetailsAsync(imei);
-                    //    if (simDetails != null)
-                    //    {
-                    //        var simMapDetails = await _simRepository.GetSimMapDetailsAsync(simDetails.SimId);
-                    //        if (simMapDetails == null)
-                    //        {
-                    //            SimMap smap = new SimMap();
-                    //            smap.SimId = simDetails.SimId;
-                    //            smap.ShopId = request.shopId ?? 0;
-                    //            smap.UserId = request.loggedInUserId ?? 0;
-                    //            smap.MappedDate = DateTime.Now;
-                    //            smap.CreatedDate = DateTime.Now;
-                    //            smap.IsActive = true;
-                    //            _simRepository.Add(smap);
-                    //            await _simRepository.SaveChangesAsync();
-                    //            totalAllcated++;
-                    //            await SyncSimAPI(request.shopId ?? 0, simDetails.SimId, simDetails.NetworkId, request.loggedInUserId ?? 0);
-                    //        }
-                    //    }
-                    //}
-                    await LogUserTrack(request);
-
-                    response = Utility.CreateResponse("Total " + allocatedCount + " Sim cards are allocated", HttpStatusCode.OK);
-
                 }
-                else
-                {
-                    response = Utility.CreateResponse("IMEI or ShopId can not be empty", HttpStatusCode.OK);
-                }
-
+                var allocatedCount = await _simRepository.AllocateSimsAsync(request.shopId.Value, request.loggedInUserId.Value, imeiTable);                
+                await LogUserTrack(request);
+                response = Utility.CreateResponse("Total " + allocatedCount + " Sim cards are allocated", HttpStatusCode.OK);
             }
-            catch (Exception ex)
+            else
             {
-                response = response.HandleException(ex, _simRepository);
+                response = Utility.CreateResponse("IMEI or ShopId can not be empty", HttpStatusCode.OK);
             }
             return response;
         }
@@ -84,8 +51,7 @@ namespace SIMAPI.Business.Services
         public async Task<CommonResponse> DeAllocateSimsAsync(GetSimInfoRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+          
                 if (request.imeiNumbers.Length > 0 && request.shopId.HasValue)
                 {
                     var imeiTable = new DataTable();
@@ -98,32 +64,7 @@ namespace SIMAPI.Business.Services
                         }
                     }
                     var deAllocatedCount = await _simRepository.DeAllocateSimsAsync(request.shopId.Value, request.loggedInUserId.Value, imeiTable);
-                    //int totalDeAllcated = 0;
-                    //foreach (var imei in request.imeiNumbers)
-                    //{
-                    //    var simDetails = await _simRepository.GetSimDetailsAsync(imei);
-                    //    if (simDetails != null)
-                    //    {
-                    //        var simMapDetails = await _simRepository.GetSimMapDetailsAsync(simDetails.SimId);
-                    //        if (simMapDetails != null)
-                    //        {
-                    //            SimMapChangeLog sChangeLog = new SimMapChangeLog();
-                    //            sChangeLog.SimId = simMapDetails.SimId;
-                    //            sChangeLog.ShopId = simMapDetails.ShopId;
-                    //            sChangeLog.UserId = simMapDetails.UserId;
-                    //            sChangeLog.MappedDate = simMapDetails.MappedDate;
-                    //            sChangeLog.DeAllocatedBy = request.loggedInUserId.Value;
-                    //            sChangeLog.CreatedDate = DateTime.Now;
-                    //            _simRepository.Add(sChangeLog);
-                    //            await _simRepository.SaveChangesAsync();
-
-                    //            _simRepository.Remove(simMapDetails);
-                    //            await _simRepository.SaveChangesAsync();
-                    //            await _simRepository.DeAllocateFromSyncSimAPI(simMapDetails.SimId);
-                    //            totalDeAllcated++;
-                    //        }
-                    //    }
-                    //}
+                    
                     if (deAllocatedCount != "0")
                     {
                         response = Utility.CreateResponse("Total " + deAllocatedCount + " Sim cards have been De-allocated", HttpStatusCode.OK);
@@ -137,19 +78,14 @@ namespace SIMAPI.Business.Services
                 {
                     response = Utility.CreateResponse("IMEI or ShopId can not be empty", HttpStatusCode.OK);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _simRepository);
-            }
+            
             return response;
         }
 
         public async Task<CommonResponse> GetSimHistoryDetailsAsync(GetSimInfoRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+           
                 if (request.imeiNumbers.Length > 0)
                 {
                     int totalAllcated = 0;
@@ -170,19 +106,14 @@ namespace SIMAPI.Business.Services
                     var result = await _simRepository.GetSimHistoryDetailsAsync(simNumbersBuilder);
                     response = Utility.CreateResponse(result, HttpStatusCode.OK);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _simRepository);
-            }
+           
             return response;
         }
 
         public async Task<CommonResponse> ScanSimsAsync(GetSimInfoRequest request)
         {
             CommonResponse response = new CommonResponse();
-            try
-            {
+            
                 if (request.imeiNumbers.Length > 0 && request.shopId.HasValue)
                 {
                     int totalAllcated = 0;
@@ -213,11 +144,7 @@ namespace SIMAPI.Business.Services
                     var result = await _simRepository.ScanSimsAsync(simNumbersBuilder);
                     response = Utility.CreateResponse(result, HttpStatusCode.OK);
                 }
-            }
-            catch (Exception ex)
-            {
-                response = response.HandleException(ex, _simRepository);
-            }
+           
             return response;
         }
 
@@ -225,7 +152,7 @@ namespace SIMAPI.Business.Services
         {
             UserTrack userTrack = new UserTrack();
             userTrack.ShopId = request.shopId;
-            userTrack.UserId = request.loggedInUserId ?? 0;
+            userTrack.UserId = request.loggedInUserId.Value;
             userTrack.TrackedDate = DateTime.Now;
             userTrack.CreatedDate = DateTime.Now;
             userTrack.WorkType = "field";
@@ -270,13 +197,7 @@ namespace SIMAPI.Business.Services
                 i = i + 1;
             }
             await _simRepository.SaveChangesAsync();
-
-
-            //    var sqlParameters = new[]
-            //    {
-            //        new SqlParameter("@simNumbers", simNumbersBuilder.ToString())
-            //    };
-            //    await ExecuteStoredProcedureAsync("exec [dbo].[UpdateLebaraMobileNumber] @simNumbers", sqlParameters);
+                       
         }
     }
 }

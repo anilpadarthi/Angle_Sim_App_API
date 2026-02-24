@@ -11,7 +11,7 @@ namespace SIMAPI.Controllers
         private readonly IDashboardService _service;
         private readonly IConfiguration _configuration;
         public DashboardController(IDashboardService service, IConfiguration configuration)
-        {  
+        {
             _service = service;
             _configuration = configuration;
         }
@@ -35,6 +35,16 @@ namespace SIMAPI.Controllers
             return Json(result);
         }
 
+        [HttpPost("GetNetworkWiseInstantActivations")]
+        public async Task<IActionResult> GetNetworkWiseInstantActivations(GetReportRequest request)
+        {
+            request.loggedInUserId = GetUserId;
+            request.loggedInUserRole = GetUser.userRole.RoleName;
+            request.userRoleId = GetUser.userRole.UserRoleId;
+            var result = await _service.GetNetworkWiseInstantActivationsAsync(request);
+            return Json(result);
+        }
+
         [HttpPost("GetSimAllocationReport")]
         public async Task<IActionResult> GetSimAllocationReport(GetReportRequest request)
         {
@@ -53,6 +63,16 @@ namespace SIMAPI.Controllers
             request.userRole = GetUser.userRole.RoleName;
             request.userRoleId = GetUser.userRole.UserRoleId;
             var result = await _service.GetUserWiseActivationsAsync(request);
+            return Json(result);
+        }
+
+        [HttpPost("GetUserWiseAccessoriesSales")]
+        public async Task<IActionResult> GetUserWiseAccessoriesSales(GetReportRequest request)
+        {
+            request.loggedInUserId = GetUserId;
+            request.userRole = GetUser.userRole.RoleName;
+            request.userRoleId = GetUser.userRole.UserRoleId;
+            var result = await _service.GetUserWiseAccessoriesSalesAsync(request);
             return Json(result);
         }
 

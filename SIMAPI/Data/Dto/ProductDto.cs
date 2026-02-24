@@ -41,4 +41,6 @@ namespace SIMAPI.Data.Dto
         public List<ProductBundle>? BundleItems { get; set; }
 
     }
+
+
 }

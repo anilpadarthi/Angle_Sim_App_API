@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Azure.Core;
+using Microsoft.Data.SqlClient;
 using SIMAPI.Data;
 using SIMAPI.Data.Dto;
 using SIMAPI.Data.Entities;
@@ -13,6 +14,18 @@ namespace SIMAPI.Repository.Repositories
     {
         public ReportRepository(SIMDBContext context) : base(context)
         {
+        }
+
+        public async Task<IEnumerable<InstantActivationDetailsReportModel>> GetMonthlyInstantActivationDetailsAsync(GetReportRequest request)
+        {
+            var sqlParameters = new[]
+            {
+                 !string.IsNullOrEmpty( request.fromDate) ? new SqlParameter("@date", request.fromDate) : new SqlParameter("@date", DBNull.Value),
+                 !string.IsNullOrEmpty( request.filterType) ? new SqlParameter("@filterType", request.filterType) : new SqlParameter("@filterType", DBNull.Value),
+                 request.filterId.HasValue ? new SqlParameter("@filterId", request.filterId) : new SqlParameter("@filterId", DBNull.Value)
+                
+            };
+            return await ExecuteStoredProcedureAsync<InstantActivationDetailsReportModel>("exec [dbo].[Monthly_Instant_Activations_Details]  @date, @filterType, @filterId ", sqlParameters);
         }
 
         public async Task<IEnumerable<MonthlyActivationModel>> GetMonthlyActivationsAsync(GetReportRequest request)
@@ -146,15 +159,16 @@ namespace SIMAPI.Repository.Repositories
         public async Task<IEnumerable<InstantActivationReportModel>> GetInstantActivationReportAsync(GetReportRequest request)
         {
             var sqlParameters = new[]
-            {
-                new SqlParameter("@userId", request.userId),
-                new SqlParameter("@userRoleId", request.userRoleId),
-                new SqlParameter("@filterType", request.filterType),
-                new SqlParameter("@filterId", request.filterId),
-                new SqlParameter("@date", request.fromDate),
-                new SqlParameter("@reportType", request.reportType)
+             {
+                new SqlParameter("@filterMode", request.filterMode),
+                 !string.IsNullOrEmpty( request.fromDate) ? new SqlParameter("@date", request.fromDate) : new SqlParameter("@date", DBNull.Value),
+                 request.userId.HasValue ? new SqlParameter("@userId", request.userId) : new SqlParameter("@userId", DBNull.Value),
+                 !string.IsNullOrEmpty( request.userRole) ? new SqlParameter("@userRole", request.userRole) : new SqlParameter("@userRole", DBNull.Value),
+                 !string.IsNullOrEmpty( request.filterType) ? new SqlParameter("@filterType", request.filterType) : new SqlParameter("@filterType", DBNull.Value),
+                 request.filterId.HasValue ? new SqlParameter("@filterId", request.filterId) : new SqlParameter("@filterId", DBNull.Value),
+                new SqlParameter("@isInstantActivation", 1)
             };
-            return await ExecuteStoredProcedureAsync<InstantActivationReportModel>("exec [dbo].[Get_Instant_Activations] @reportType, @userId, @userRoleId,@filterType,@filterId,@date", sqlParameters);
+            return await ExecuteStoredProcedureAsync<InstantActivationReportModel>("exec [dbo].[Get_Instant_Activations] @filterMode, @date, @userId, @userRole,@filterType, @filterId, @isInstantActivation", sqlParameters);
         }
 
         public async Task<SalaryReportModel> GetSalaryReportAsync(GetReportRequest request)
@@ -170,7 +184,19 @@ namespace SIMAPI.Repository.Repositories
             salaryReportModel.salarySimCommissionDetailsModel = await ExecuteStoredProcedureAsync<SalarySimCommissionDetailsModel>("exec [dbo].[Get_Salary_Sim_Commission_Details] @filterType,@filterId,@date", sqlParameters);
             salaryReportModel.salaryAccessoriesCommissionDetailsModel = await ExecuteStoredProcedureAsync<SalaryAccessoriesCommissionDetailsModel>("exec [dbo].[Get_Salary_Accessories_Commission_Details] @filterType,@filterId,@date", sqlParameters);
             salaryReportModel.salaryTransactions = await ExecuteStoredProcedureAsync<UserSalaryTransaction>("exec [dbo].[Get_Salary_Transactions] @filterType,@filterId,@date", sqlParameters);
-            return salaryReportModel;
+            
+            if (salaryReportModel.salarySimCommissionDetailsModel != null && Convert.ToDateTime(request.fromDate).Year >= 2026)
+            {
+                string[] namesList = new string[] { "VODAFONE", "VOXI", "INSTANT ACTIVATIONS" };
+                salaryReportModel.instantAndVodafoneVoxiList = salaryReportModel.salarySimCommissionDetailsModel.Where(w => namesList.Contains(w.NetworkName)).ToList();
+                salaryReportModel.salarySimCommissionDetailsModel = salaryReportModel.salarySimCommissionDetailsModel.Where(w => !namesList.Contains(w.NetworkName)).ToList();
+            }
+            else
+            {
+                salaryReportModel.instantAndVodafoneVoxiList = new List<SalarySimCommissionDetailsModel>();
+            }
+
+                return salaryReportModel;
         }
 
         public async Task<IEnumerable<SimAllocationModel>> GetSimAllocationReportAsync(GetReportRequest request)
@@ -268,17 +294,16 @@ namespace SIMAPI.Repository.Repositories
         {
             var sqlParameters = new[]
             {
-                new SqlParameter("@fromMonth", Convert.ToDateTime(request.fromDate).Month),
-            new SqlParameter("@fromYear", Convert.ToDateTime(request.fromDate).Year),
-            new SqlParameter("@toMonth", Convert.ToDateTime(request.toDate).Month),
-            new SqlParameter("@toYear", Convert.ToDateTime(request.toDate).Year),
+                new SqlParameter("@fromdate", request.fromDate),
+            new SqlParameter("@todate", request.toDate),
             request.userId.HasValue ? new SqlParameter("@userId", request.loggedInUserId) : new SqlParameter("@userId", DBNull.Value),
             !string.IsNullOrEmpty(request.filterType) ? new SqlParameter("@filterType", request.filterType) : new SqlParameter("@filterType", DBNull.Value),
             request.filterId.HasValue ? new SqlParameter("@filterId", request.filterId) : new SqlParameter("@filterId", DBNull.Value),
+             new SqlParameter("@isInstantActivation", request.isInstantActivation.Value ? 1: 0)
         };
             //return await ExecuteStoredProcedureAsync<MonthlyHistoryActivationModel>("exec [dbo].[Monthly_History_Activations] @filterMode, @fromDate,@toDate, @userId, @userRole,@filterType,@filterId, @isInstantActivation", sqlParameters);
             return await GetDataTable("Download_All_Shop_History_Activations", sqlParameters);
         }
-        
+
     }
 }

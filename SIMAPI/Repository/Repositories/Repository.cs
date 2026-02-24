@@ -1,13 +1,10 @@
-﻿using DocumentFormat.OpenXml.Office.Word;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SIMAPI.Data;
 using SIMAPI.Data.Entities;
 using SIMAPI.Repository.Interfaces;
 using System.Data;
 using System.Data.Common;
-using System.Drawing;
 using System.Dynamic;
 
 namespace SIMAPI.Repository.Repositories
@@ -79,7 +76,6 @@ namespace SIMAPI.Repository.Repositories
                 connection.Close();
                 return results;
             }
-            return null;
         }
 
         public async Task<List<dynamic>> GetDataSet(string procedureName, params DbParameter[] parameters)
@@ -167,6 +163,11 @@ namespace SIMAPI.Repository.Repositories
             return result;
         }
 
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
+
         public async Task<int> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync();
@@ -212,11 +213,11 @@ namespace SIMAPI.Repository.Repositories
             _context.Entry(entity).State = EntityState.Detached;
         }
 
-        public async Task LogError(Exception ex)
+        public async Task LogError(Exception ex, string optional = "")
         {
             var errorLog = new ErrorInfo
             {
-                ErrorMessage = ex.Message,
+                ErrorMessage = ex.Message + "_" + optional,
                 StackTrace = ex.StackTrace,
                 Method = ex.Source,
                 CreatedDate = DateTime.Now
@@ -226,33 +227,25 @@ namespace SIMAPI.Repository.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public object? GetScalar(string procedureName, params DbParameter[] parameters)
+        public async Task<object?> GetScalar(string procedureName, params DbParameter[] parameters)
         {
-
             var connectionString = _context.Database.GetDbConnection().ConnectionString;
-            object result;
-            using (var connection = new SqlConnection(connectionString))
+
+            await using var connection = new SqlConnection(connectionString);
+            await using var cmd = new SqlCommand(procedureName, connection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 120; // optional safety
+
+            if (parameters != null)
             {
-                using (var cmd = new SqlCommand(procedureName))
-                {
-                    cmd.Connection = connection;
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    if (parameters != null)
-                    {
-                        foreach (var item in parameters)
-                        {
-                            cmd.Parameters.Add(item);
-                        }
-                    }
-                    connection.Open();
-                    result = cmd.ExecuteScalar();
-                    connection.Close();
-                }
-
+                cmd.Parameters.AddRange(parameters);
             }
-            return result;
 
+            await connection.OpenAsync();
+            return await cmd.ExecuteScalarAsync();
         }
+
 
         private bool IsSame(object? a, object? b)
         {

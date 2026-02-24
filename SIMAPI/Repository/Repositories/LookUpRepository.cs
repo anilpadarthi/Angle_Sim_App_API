@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using SIMAPI.Business.Enums;
 using SIMAPI.Data;
 using SIMAPI.Data.Dto;
@@ -108,6 +109,16 @@ namespace SIMAPI.Repository.Repositories
             return resultList;
         }
 
+
+        public async Task<IEnumerable<LookupResult>> GetAvailableShopPhysicalCommissionChequesAsync(int shopId)
+        {
+            var sqlParameters = new[]
+           {
+                new SqlParameter("@shopId", shopId)
+            };
+            return await ExecuteStoredProcedureAsync<LookupResult>("exec dbo.GetAvailablePhysicalCommissionCheques @shopId", sqlParameters);
+        }
+
         public async Task<IEnumerable<LookupResult>> GetUserLookup(GetLookupRequest request)
         {
             if (request.filterType == "Managers")
@@ -127,7 +138,7 @@ namespace SIMAPI.Repository.Repositories
                     return await (from a in _context.Set<User>()
                                   join b in _context.Set<UserMap>()
                                   on a.UserId equals b.UserId
-                                  where a.Status != (int)EnumStatus.Deleted
+                                  where a.Status != (int)EnumStatus.Deleted 
                                   && b.IsActive == true
                                   && a.UserRoleId == (int)EnumUserRole.Agent
                                   && b.MonitorBy == request.userId

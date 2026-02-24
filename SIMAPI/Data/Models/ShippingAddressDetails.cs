@@ -6,6 +6,7 @@ namespace SIMAPI.Data.Models
     {
         public int ShopId { get; set; }
         public string? ShopName { get; set; }
+        public string? ShopOwnerName { get; set; }
         public string? ShopEmail { get; set; }
         public string? ShopPhone { get; set; }
         public string? AddressLine1 { get; set; }

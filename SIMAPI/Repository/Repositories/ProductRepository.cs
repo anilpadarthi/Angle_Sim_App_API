@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SIMAPI.Business.Enums;
 using SIMAPI.Data;
@@ -29,17 +30,17 @@ namespace SIMAPI.Repository.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateDisplayOrderAsync(int id, int displayOrder)
-        {
-            var dbRecord = await GetByIdAsync(id);
-            dbRecord.DisplayOrder = displayOrder;
-            await _context.SaveChangesAsync();
-        }
-
         public async Task UpdateStatusAsync(int id, bool status)
         {
             var dbRecord = await GetByIdAsync(id);
             dbRecord.Status = status ? (short)EnumStatus.Active : (short)EnumStatus.InActive;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateDisplayOrderAsync(int id, int displayOrder)
+        {
+            var dbRecord = await GetByIdAsync(id);
+            dbRecord.DisplayOrder = displayOrder;
             await _context.SaveChangesAsync();
         }
 
@@ -83,11 +84,12 @@ namespace SIMAPI.Repository.Repositories
                                     ProductId = b.ProductId,
                                     ProductName = p != null ? p.ProductName : string.Empty,
                                     Quantity = b.Quantity,
-                                    Price = b.Price ?? 0
+                                    Price = b.Price?? 0
                                 }).ToListAsync();
 
             return result;
         }
+
 
         public async Task<Product> GetByNameAsync(string productName)
         {

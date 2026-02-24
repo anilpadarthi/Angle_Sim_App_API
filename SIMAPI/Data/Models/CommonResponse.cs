@@ -11,9 +11,21 @@ namespace SIMAPI.Data.Models
         public string message { get; set; }
         public object data { get; set; }
 
-        public CommonResponse HandleException(Exception exception, IRepository commRepository)
+        public async Task<CommonResponse> HandleException(Exception exception, IRepository repository, string optional = "")
         {
-            commRepository.LogError(exception);
+            // Log error to repository if available
+            try
+            {
+                if (repository != null)
+                {
+                    await repository.LogError(exception, optional);
+                }
+            }
+            catch
+            {
+                // Swallow logging errors to avoid masking original exception
+            }
+
             var response = new CommonResponse();
             var errorMessage = "error found: " + exception?.Message + "<br/>" + exception?.StackTrace;
             response.status = false;

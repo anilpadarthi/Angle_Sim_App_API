@@ -36,6 +36,7 @@ namespace SIMAPI.Data.Models.OrderListModels
         public IEnumerable<OrderItemModel>? Items { get; set; }
     }
 
+
     public partial class ProductInfo
     {
         public int ProductId { get; set; }
