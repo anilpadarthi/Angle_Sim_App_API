@@ -13,5 +13,7 @@ namespace SIMAPI.Business.Interfaces
         Task<CommonResponse> UpdateAsync(CategoryDto request);
         Task<CommonResponse> DeleteAsync(int id);
 
+        Task<CommonResponse> ExportAllCategoriesAsync();
+
     }
 }

@@ -26,7 +26,9 @@ namespace SIMAPI.Business.Interfaces
         Task<CommonResponse> UpdateAddressAsync(ShippingAddressDetails request);
         Task<CommonResponse> SendActivationEmailAsync(int shopId);
         Task<CommonResponse> GlobalShopSearchAsync(GetLookupRequest request);
-
+        Task<CommonResponse> CreateShopCommisioTypeChangeRequestAsync(ShopCommissionRequestDto request);
+        Task<CommonResponse> UpdateShopCommisioTypeChangeRequestAsync(ShopCommissionRequestDto request);
+        Task<CommonResponse> GetPendingCommissionTypeChangeRequestsAsync(int shopId);
 
 
     }

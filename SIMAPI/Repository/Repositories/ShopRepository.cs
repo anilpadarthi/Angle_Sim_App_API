@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using SIMAPI.Business.Enums;
 using SIMAPI.Data;
 using SIMAPI.Data.Dto;
@@ -143,7 +144,7 @@ namespace SIMAPI.Repository.Repositories
         {
             ShopVisit shopVisit = new ShopVisit();
             shopVisit.ShopId = request.ShopId;
-            shopVisit.UserId = request.UserId.Value;
+            shopVisit.UserId = request.UserId.HasValue ? request.UserId.Value : 13;
             shopVisit.Comment = request.Comments;
             shopVisit.ReferenceImage = request.ReferenceImage;
             shopVisit.IsSentToWhatsApp = 0;
@@ -152,7 +153,7 @@ namespace SIMAPI.Repository.Repositories
 
             UserTrack userTrack = new UserTrack();
             userTrack.ShopId = request.ShopId;
-            userTrack.UserId = request.UserId.Value;
+            userTrack.UserId = request.UserId.HasValue ? request.UserId.Value : 13;
             userTrack.TrackedDate = DateTime.Now;
             userTrack.CreatedDate = DateTime.Now;
             userTrack.WorkType = "ShopVisit";
@@ -163,6 +164,8 @@ namespace SIMAPI.Repository.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+       
 
         public async Task<IEnumerable<ShopVisitHistoryModel>> GetShopVisitHistoryAsync(int shopId)
         {
@@ -244,7 +247,7 @@ namespace SIMAPI.Repository.Repositories
             bool isNumeric = int.TryParse(request.searchText, out int shopId);
             if (request.userRoleId == (int)EnumUserRole.Manager)
             {
-                return await (from s in _context.Set<VwShops>()                              
+                return await (from s in _context.Set<VwShops>()
                               join c in _context.Set<UserMap>()
                               on s.UserId equals c.UserId into temp2
                               from t2 in temp2.DefaultIfEmpty()
@@ -284,6 +287,24 @@ namespace SIMAPI.Repository.Repositories
                 return Enumerable.Empty<VwShops>();
             }
         }
+
+        public async Task<IEnumerable<ShopCommissionRequest>> GetPendingCommissionTypeChangeRequestsAsync(int shopId)
+        {
+            return await _context.Set<ShopCommissionRequest>()
+                .Where(w => w.ShopId == shopId && w.Status != "Approved")
+                .OrderByDescending(o => o.CreatedDate)
+                .ToListAsync();
+
+        }
+
+        public async Task<ShopCommissionRequest?> GetCommissionTypeChangeRequestAsync(int requestId)
+        {
+            return await _context.Set<ShopCommissionRequest>()
+                .FirstOrDefaultAsync(w => w.ShopCommissionRequestId == requestId);
+
+        }
+
+
 
     }
 }

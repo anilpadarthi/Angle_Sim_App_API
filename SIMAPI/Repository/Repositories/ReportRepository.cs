@@ -306,5 +306,16 @@ namespace SIMAPI.Repository.Repositories
             return await GetDataTableAsync("Download_All_Shop_History_Activations", sqlParameters);
         }
 
+        public async Task<IEnumerable<MessageCenterData>> GetMessageCenterDataAsync(GetReportRequest request)
+        {
+            var sqlParameters = new[]
+            {
+                new SqlParameter("@fromDate", request.fromDate),
+                new SqlParameter("@toDate", request.toDate),
+                new SqlParameter("@filterId", request.filterId?? 0),
+            };
+            return await ExecuteStoredProcedureAsync<MessageCenterData>("exec [dbo].[GetMessageCenterData] @fromDate,@toDate ,@filterId", sqlParameters);
+        }
+
     }
 }

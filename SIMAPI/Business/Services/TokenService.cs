@@ -51,13 +51,13 @@ namespace SIMAPI.Business.Services
 
         }
 
-        public async Task<RefreshToken> CreateRefreshToken(int userId,string type)
+        public async Task<RefreshToken> CreateRefreshToken(int userId, string type)
         {
             var refreshToken = new RefreshToken
             {
                 Token = Guid.NewGuid().ToString(),
-                Created = DateTime.UtcNow,
-                Expires = DateTime.UtcNow.AddMinutes(
+                Created = DateTime.Now,
+                Expires = DateTime.Now.AddMinutes(
                     Convert.ToDouble(_config["Jwt:RefreshTokenMinutes"])),
                 UserId = userId,
                 IsActive = true,
@@ -65,7 +65,7 @@ namespace SIMAPI.Business.Services
             };
 
             _tokenRepository.Add(refreshToken);
-           await _tokenRepository.SaveChangesAsync();
+            await _tokenRepository.SaveChangesAsync();
 
             return refreshToken;
         }

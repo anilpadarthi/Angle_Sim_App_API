@@ -113,8 +113,8 @@ namespace SIMAPI.Repository.Repositories
             && w.OrderStatusTypeId != (int)EnumOrderStatus.Returned
             && w.OrderStatusTypeId != (int)EnumOrderStatus.Hide
             && w.OrderStatusTypeId != (int)EnumOrderStatus.Received
-            &&
-            (
+            && 
+            ( 
                 w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.COD
                 || w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.AC
                 || w.OrderPaymentTypeId == (int)EnumOrderPaymentMethod.Bonus
@@ -456,7 +456,7 @@ namespace SIMAPI.Repository.Repositories
                 && request.loggedInUserRoleId != (int)EnumUserRole.SuperAdmin
                 && request.loggedInUserRoleId != (int)EnumUserRole.CallCenter)
             {
-                query = query.Where(w => w.IsHide == false);
+                query = query.Where(w => w.OrderStatusId !=  (int)EnumOrderStatus.Hide);
             }
 
             return query;

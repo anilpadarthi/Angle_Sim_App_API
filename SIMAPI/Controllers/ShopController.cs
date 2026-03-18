@@ -177,5 +177,28 @@ namespace SIMAPI.Controllers
             return Json(result);
         }
 
+        [HttpGet("GetPendingCommissionTypeChangeRequests")]
+        public async Task<IActionResult> GetPendingCommissionTypeChangeRequests(int shopId)
+        {
+            var result = await _service.GetPendingCommissionTypeChangeRequestsAsync(shopId);
+            return Json(result);
+        }
+
+        [HttpPost("CreateShopCommisioTypeChangeRequest")]
+        public async Task<IActionResult> CreateShopCommisioTypeChangeRequest(ShopCommissionRequestDto request)
+        {
+            request.loggedInUserId = GetUserId;
+            var result = await _service.CreateShopCommisioTypeChangeRequestAsync(request);
+            return Json(result);
+        }
+
+        [HttpPost("UpdateShopCommisioTypeChangeRequest")]
+        public async Task<IActionResult> UpdateShopCommisioTypeChangeRequest(ShopCommissionRequestDto request)
+        {
+            request.loggedInUserId = GetUserId;
+            var result = await _service.UpdateShopCommisioTypeChangeRequestAsync(request);
+            return Json(result);
+        }
+
     }
 }
