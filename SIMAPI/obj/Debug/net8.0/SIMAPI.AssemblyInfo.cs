@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SIMAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecf8bedb2008a05565762ad00f3fdc5d7b64c72a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec46d36f65efd3947425775118df3b65d68c0f17")]
 [assembly: System.Reflection.AssemblyProductAttribute("SIMAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SIMAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -24,7 +24,7 @@ namespace SIMAPI.Data.Dto
         public string? Latitude { get; set; }
         public string? Longitude { get; set; }
         public string? TopupSystemId { get; set; }
-        public bool? IsMobileShop { get; set; }
+        public string? CommissionType { get; set; }
         public short Status { get; set; }
         public IFormFile? ImageFile { get; set; }
         public bool? IsTermsAndCondtions { get; set; }       

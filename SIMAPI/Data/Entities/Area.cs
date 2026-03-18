@@ -1,4 +1,6 @@
-﻿namespace SIMAPI.Data.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace SIMAPI.Data.Entities
 {
     public partial class Area
     {
@@ -9,6 +11,7 @@
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<AreaMap> AreaMaps { get; } = new List<AreaMap>();
     }
 }

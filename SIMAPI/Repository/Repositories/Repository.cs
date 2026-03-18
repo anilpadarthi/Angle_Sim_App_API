@@ -56,77 +56,90 @@ namespace SIMAPI.Repository.Repositories
         }
 
 
-        public async Task<List<dynamic>> GetDataTable(string procedureName, params DbParameter[] parameters)
+        public async Task<List<dynamic>> GetDataTableAsync(string procedureName, params DbParameter[] parameters)
         {
-            var connection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString);
-            using (var cmd = new SqlCommand(procedureName))
+            await using var connection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString);
+            await using var cmd = new SqlCommand(procedureName, connection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (parameters != null)
             {
-                cmd.Connection = connection;
-                cmd.CommandType = CommandType.StoredProcedure;
-                if (parameters != null)
+                foreach (var param in parameters)
                 {
-                    foreach (var item in parameters)
-                    {
-                        cmd.Parameters.Add(item);
-                    }
+                    cmd.Parameters.Add(param);
                 }
-                connection.Open();
-                var reader = await cmd.ExecuteReaderAsync();
-                List<dynamic> results = DataReaderToDynamicList(reader);
-                connection.Close();
-                return results;
             }
-        }
 
-        public async Task<List<dynamic>> GetDataSet(string procedureName, params DbParameter[] parameters)
-        {
-            var connectionString = _context.Database.GetDbConnection().ConnectionString;
-            var results = new List<dynamic>();
+            await connection.OpenAsync();
 
-            using (var connection = new SqlConnection(connectionString))
-            {
-                using (var cmd = new SqlCommand(procedureName))
-                {
-                    cmd.Connection = connection;
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    if (parameters != null)
-                    {
-                        foreach (var item in parameters)
-                        {
-                            cmd.Parameters.Add(item);
-                        }
-                    }
+            await using var reader = await cmd.ExecuteReaderAsync();
 
-                    // Use SqlDataAdapter to fill a DataSet
-                    using (var adapter = new SqlDataAdapter(cmd))
-                    {
-                        var dataSet = new DataSet();
-                        await Task.Run(() => adapter.Fill(dataSet)); // Fill DataSet asynchronously
+            var results = await DataReaderToDynamicListAsync(reader);
 
-                        // Convert each DataTable in the DataSet to a dynamic list
-                        foreach (DataTable table in dataSet.Tables)
-                        {
-                            results.Add(ConvertDataTableToDynamicList(table));
-                        }
-                    }
-                }
-
-            }
             return results;
         }
 
-        private static List<dynamic> DataReaderToDynamicList(SqlDataReader reader)
+        public async Task<List<List<dynamic>>> GetDataSetAsync(string procedureName, params DbParameter[] parameters)
+        {
+            var results = new List<List<dynamic>>();
+
+            var connection = _context.Database.GetDbConnection();
+
+            if (connection.State != ConnectionState.Open)
+                await connection.OpenAsync();
+
+            using var cmd = connection.CreateCommand();
+            cmd.CommandText = procedureName;
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (parameters != null)
+            {
+                foreach (var param in parameters)
+                    cmd.Parameters.Add(param);
+            }
+
+            using var reader = await cmd.ExecuteReaderAsync();
+
+            do
+            {
+                var tableResult = new List<dynamic>();
+
+                while (await reader.ReadAsync())
+                {
+                    IDictionary<string, object> row = new ExpandoObject();
+
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        row[reader.GetName(i)] = reader.IsDBNull(i) ? null : reader.GetValue(i);
+                    }
+
+                    tableResult.Add(row);
+                }
+
+                results.Add(tableResult);
+
+            } while (await reader.NextResultAsync());
+
+            return results;
+        }
+
+        private static async Task<List<dynamic>> DataReaderToDynamicListAsync(SqlDataReader reader)
         {
             var result = new List<dynamic>();
 
-            while (reader.Read())
+            while (await reader.ReadAsync())
             {
-                var expandoObject = new ExpandoObject() as IDictionary<string, Object>;
+                IDictionary<string, object> row = new ExpandoObject();
+
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    expandoObject.Add(reader.GetName(i), reader[i].ToString() == "" ? "0" : reader[i].ToString());
+                    var value = reader.IsDBNull(i) ? null : reader.GetValue(i);
+
+                    row[reader.GetName(i)] = value ?? "0";
                 }
-                result.Add(expandoObject);
+
+                result.Add(row);
             }
 
             return result;
@@ -170,7 +183,17 @@ namespace SIMAPI.Repository.Repositories
 
         public async Task<int> SaveChangesAsync()
         {
-            return await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                //LogService(ex.Message);
+                return 0;
+
+            }
         }
 
         public void Add<TEntity>(TEntity record) where TEntity : class
@@ -244,6 +267,19 @@ namespace SIMAPI.Repository.Repositories
 
             await connection.OpenAsync();
             return await cmd.ExecuteScalarAsync();
+        }
+
+        private void LogService(string content)
+        {
+            // Replace ConfigurationManager.AppSettings with Environment.GetEnvironmentVariable or another configuration source
+            // Example assumes you have set an environment variable named "ErrorLogPath"
+            var path = "G:\\ExceptionLog.txt";
+            FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.BaseStream.Seek(0, SeekOrigin.End);
+            sw.WriteLine(content);
+            sw.Flush();
+            sw.Close();
         }
 
 

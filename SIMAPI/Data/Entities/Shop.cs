@@ -26,7 +26,7 @@
         public string? Password { get; set; }
         public string? VatNumber { get; set; }
         public short? Status { get; set; }
-        public bool? IsMobileShop { get; set; }
+        public string? CommissionType { get; set; }
         public bool? IsAgreeTerms { get; set; }
         public int? CreatedBy { get; set; }
         public int? ModifiedBy { get; set; }

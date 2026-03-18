@@ -155,41 +155,40 @@ namespace SIMAPI.Business.Helper.PDF
                         page.Background().Element(ComposeWatermark);
                         page.Content().Column(column =>
                         {
-                            column.Item().Text("1A Victoria Road").AlignRight().FontSize(10).FontFamily("Calibri");
-                            column.Item().Text("London, E18 1LJ").AlignRight().FontSize(10).FontFamily("Calibri");
-                            column.Item().PaddingBottom(10).Text("Commission Statement for the month of " + monthName).AlignCenter().FontSize(14).FontFamily("Calibri").Bold();
+                            column.Item().Text("Angles Solutions Pvt. Limited").AlignRight().FontSize(10).FontFamily("Calibri");
+                            column.Item().Text("Unit 7, Manor Way Industrial Estate,").AlignRight().FontSize(10).FontFamily("Calibri");
+                            column.Item().Text("Curzon Drive, RM17 6BG").AlignRight().FontSize(10).FontFamily("Calibri");
+                            column.Item().Text("www.anglesims.co.uk").AlignRight().FontSize(10).FontFamily("Calibri");
+                            column.Item().Text("020 3560 6944").AlignRight().FontSize(10).FontFamily("Calibri");
+                            //column.Item().PaddingBottom(10).Text("Commission Statement for the month of " + monthName).AlignCenter().FontSize(14).FontFamily("Calibri").Bold();
 
                             column.Item().Table(table =>
                             {
                                 table.ColumnsDefinition(columns =>
                                 {
-                                    columns.RelativeColumn(3);
-                                    columns.RelativeColumn(2);
-                                    columns.RelativeColumn(1);
+                                    columns.RelativeColumn(6);
                                 });
 
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.ShopName + "\n" + customer.Address1.Replace("\r", "").Replace("\n","")).FontFamily("Calibri").FontSize(10).Bold();
-                                table.Cell().Element(CellNoBorderStyle).Text("Shop Id :").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.OldShopId.ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignRight();
+                                table.Cell().Element(CellNoBorderStyle).Text("Shop Id : AS" + customer.OldShopId).FontFamily("Calibri").FontSize(10).Bold();
+                                table.Cell().Element(CellNoBorderStyle).Text( customer.ShopName).FontFamily("Calibri").FontSize(10);
+                                table.Cell().Element(CellNoBorderStyle).Text( customer.Address1.Replace("\r", "").Replace("\n","")).FontFamily("Calibri").FontSize(10);
 
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.Address2.Replace("\r", "").Replace("\n", "")).FontFamily("Calibri").FontSize(10).Bold();
-                                table.Cell().Element(CellNoBorderStyle).Text("Area Code :").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.AreaCode).FontFamily("Calibri").FontSize(10).Bold().AlignRight();
-
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.AreaName).FontFamily("Calibri").FontSize(10).Bold();
-                                table.Cell().Element(CellNoBorderStyle).Text("Agent :").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.UserName).FontFamily("Calibri").FontSize(10).Bold().AlignRight();
-
-                                table.Cell().Element(CellNoBorderStyle).Text(customer.PostCode).FontFamily("Calibri").FontSize(10).Bold();
-                                table.Cell().Element(CellNoBorderStyle).Text("Date :").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
-                                table.Cell().Element(CellNoBorderStyle).Text(commissionGivenDate.ToString("dd/MM/yyyy", new CultureInfo("en-GB"))).FontFamily("Calibri").FontSize(10).Bold().AlignRight();
+                                table.Cell().Element(CellNoBorderStyle).Text(" ").FontFamily("Calibri").FontSize(10).Bold().AlignRight();
+                                table.Cell().Element(CellNoBorderStyle).Text("Date :" + commissionGivenDate.ToString("dd/MM/yyyy", new CultureInfo("en-GB"))).FontFamily("Calibri").FontSize(10).Bold().AlignRight();
                             });
+
+                            column.Item().Padding(10).Text("Commission Statement for the month of " + monthName).AlignCenter().FontSize(14).FontFamily("Calibri").Bold();
 
                             column.Item().Table(table =>
                             {
                                 table.ColumnsDefinition(columns =>
                                 {
                                     columns.RelativeColumn(2);
+                                    columns.RelativeColumn(1);
+                                    columns.RelativeColumn(1);
+                                    columns.RelativeColumn(1);
+                                    columns.RelativeColumn(1);
+                                    columns.RelativeColumn(1);
                                     columns.RelativeColumn(1);
                                     columns.RelativeColumn(1);
                                     columns.RelativeColumn(1);
@@ -202,66 +201,60 @@ namespace SIMAPI.Business.Helper.PDF
                                 table.Header(header =>
                                 {
 
-                                    header.Cell().Element(CellStyle).Text(" ").FontFamily("Calibri").FontSize(10).Bold();
-                                    header.Cell().ColumnSpan(3).Element(CellStyle).AlignCenter().Text("1st Topup").FontFamily("Calibri").FontSize(10).Bold();
-                                    header.Cell().ColumnSpan(3).Element(CellStyle).AlignCenter().Text("Following Topups").FontFamily("Calibri").FontSize(10).Bold();
-                                    header.Cell().ColumnSpan(1).Element(CellStyle).Text("").FontFamily("Calibri").FontSize(10).Bold();
+                                    header.Cell().ColumnSpan(13).Element(CellStyle).AlignCenter().Text("Topup Ups").FontFamily("Calibri").FontSize(10).Bold();
 
-                                    header.Cell().Element(CellStyle).Text("Network").FontFamily("Calibri").FontSize(10).Bold();
-                                    header.Cell().Element(CellStyle).Text("1st").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                    header.Cell().Element(CellStyle).Text("Rate (£)").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Network").FontFamily("Calibri").FontSize(10).Bold().AlignLeft();
+                                    header.Cell().Element(CellStyle).Text("Conn1").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Rate1").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn2").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn3").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn4").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn5").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn6").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn7").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn8").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn9").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                    header.Cell().Element(CellStyle).Text("Conn10").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
                                     header.Cell().Element(CellStyle).Text("Total (£)").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                    header.Cell().Element(CellStyle).Text("Topups").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                    header.Cell().Element(CellStyle).Text("Rate (£)").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                    header.Cell().Element(CellStyle).Text("Total (£)").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                    header.Cell().Element(CellStyle).Text("Grand Total (£)").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
                                 });
 
                                 foreach (var detail in customer.commissionStatementDetails)
                                 {
-                                    table.Cell().Element(CellStyle).Text(detail.Network).FontFamily("Calibri").FontSize(10).Bold();
+                                    table.Cell().Element(CellStyle).Text(detail.Network).FontFamily("Calibri").FontSize(10).AlignLeft();
                                     table.Cell().Element(CellStyle).Text(detail.Conn1.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
-                                    table.Cell().Element(CellStyle).Text(detail.Rate1.ToString("F2")).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                    table.Cell().Element(CellStyle).Text(detail.Comm1.ToString("F2")).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Rate1.ToString("F2")).FontFamily("Calibri").FontSize(10).AlignCenter();
                                     table.Cell().Element(CellStyle).Text(detail.Conn2.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
-                                    table.Cell().Element(CellStyle).Text(detail.Rate2.ToString("F2")).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                    table.Cell().Element(CellStyle).Text(detail.Comm2.ToString("F2")).FontFamily("Calibri").FontSize(10).AlignCenter();
-                                    table.Cell().Element(CellStyle).Text((detail.Comm1 + detail.Comm2).ToString("F2")).FontSize(10).FontFamily("Calibri").AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn3.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn4.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn5.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn6.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn7.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn8.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn9.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text(detail.Conn10.ToString()).FontFamily("Calibri").FontSize(10).AlignCenter();
+                                    table.Cell().Element(CellStyle).Text((detail.Comm1 + detail.Comm2 + detail.Comm3 + detail.Comm4 + detail.Comm5 +detail.Comm6 + detail.Comm7 + detail.Comm8 + detail.Comm9 + detail.Comm10).ToString("F2")).FontSize(10).FontFamily("Calibri").AlignCenter();
                                 }
 
-                                table.Cell().Element(CellStyle).Text("Total").FontFamily("Calibri").FontSize(10).Bold();
+                                table.Cell().Element(CellStyle).Text("Total").FontFamily("Calibri").FontSize(10).Bold();                               
                                 table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn1).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                table.Cell().Element(CellStyle).Text("").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Comm1).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text("").FontFamily("Calibri").FontSize(10).Bold();
                                 table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn2).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                table.Cell().Element(CellStyle).Text("").FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Comm2).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
-                                table.Cell().Element(CellStyle).Text(totalAmount).FontSize(10).FontFamily("Calibri").Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn3).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn4).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn5).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn6).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn7).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn8).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn9).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Conn10).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
+
+                                table.Cell().Element(CellStyle).Text(customer.commissionStatementDetails.Sum(s => s.Comm1 + s.Comm2 + s.Comm3 +s.Comm4 +s.Comm5 +s.Comm6 + s.Comm7  + s.Comm8 + s.Comm9 + s.Comm10).ToString()).FontFamily("Calibri").FontSize(10).Bold().AlignCenter();
 
                             });
 
-                            column.Item().PaddingTop(5).Text("To re-stock the sims please call: 0333-0119-880").AlignCenter().FontSize(10).FontFamily("Calibri").Bold();
+                            column.Item().PaddingTop(5).Text("To re-stock the sims please call : 020 3560 6944").AlignCenter().FontSize(10).FontFamily("Calibri").Bold();
                             column.Item().PaddingTop(5).Text("This is a Commission statement and is not a VAT document. If you are VAT registered VAT should be charged on your invoice at the appropriate rate.").AlignCenter().FontSize(10).FontFamily("Calibri");
-                            if (customer.IsMobileShop == true)
-                            {
-                                column.Item().PaddingTop(103).PaddingBottom(40).Text(" ").AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
-                                //column.Item().PaddingTop(103).PaddingBottom(40).Text(customer.AreaCode + "/" + customer.OldShopId + "/" + customer.ShopCommissionHistoryId).AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
-                            }
-                            else
-                            {
-                                column.Item().PaddingTop(60).PaddingBottom(40).Text(" ").AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
-                                //column.Item().PaddingTop(60).PaddingBottom(40).Text(customer.AreaCode + "/" + customer.OldShopId + "/" + customer.ShopCommissionHistoryId).AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
-                            }
-
-                            if (request.isDisplayChequeInfo.HasValue && request.isDisplayChequeInfo.Value)
-                            {
-                                column.Item().PaddingTop(45).PaddingRight(10).Text(commissionGivenDate.ToString("dd/MM/yyyy", new CultureInfo("en-GB"))).AlignRight().FontSize(10).FontFamily("Calibri").Bold();
-                                column.Item().PaddingTop(10).PaddingLeft(10).Text($"{customer.PayableName}").FontSize(10).FontFamily("Calibri").Bold();
-                                column.Item().PaddingTop(10).PaddingRight(30).Text(totalAmount).AlignRight().FontSize(10).FontFamily("Calibri").Bold();
-                                column.Item().PaddingTop(10).PaddingLeft(10).Text(amountInWords).FontSize(10).FontFamily("Calibri").Bold();
-
-                                column.Item().PaddingTop(10).PaddingLeft(420).Width(100).AlignRight().Image(imageURL);
-                            }
+                            column.Item().PaddingTop(60).PaddingBottom(40).Text(" ").AlignLeft().FontSize(10).FontFamily("Calibri").Bold();
                             // Add a page break between customers
                             //if (commissionShopList.Count() != pageCount)
                             //{

@@ -140,29 +140,37 @@ namespace SIMAPI.Repository.Repositories
 
         public async Task<LoggedInUserDto?> GetUserDetailsAsync(string email, string password)
         {
-            var result = await _context.Set<User>()
-               .Include(i => i.UserRole)
-                        .Where(w => (w.Email == email || w.UserName == email) && w.Password == password 
-                        && w.Status == (int)EnumStatus.Active)
-                        .FirstOrDefaultAsync();
-            if (result != null)
+            try
             {
-                LoggedInUserDto loggedInUserDto = new LoggedInUserDto()
+                var result = await _context.Set<User>()
+                   .Include(i => i.UserRole)
+                            .Where(w => (w.Email == email || w.UserName == email) && w.Password == password
+                            && w.Status == (int)EnumStatus.Active)
+                            .FirstOrDefaultAsync();
+                if (result != null)
                 {
-                    userId = result.UserId,
-                    userName = result.UserName,
-                    userRoleId = result.UserRoleId,
-                    userRole = result.UserRole,
-                    email = result.Email,
-                    userImage = result.UserImage,
-                    firstName = result.FirstName,
-                    lastName = result.LastName,
-                    designation = result.Designation,
-                    mobile = result.Mobile,
-                    doj = result.DOJ,
-                    IsSystemAccess = result.IsSystemAccess
-                };
-                return loggedInUserDto;
+                    LoggedInUserDto loggedInUserDto = new LoggedInUserDto()
+                    {
+                        userId = result.UserId,
+                        userName = result.UserName,
+                        userRoleId = result.UserRoleId,
+                        userRole = result.UserRole,
+                        email = result.Email,
+                        userImage = result.UserImage,
+                        firstName = result.FirstName,
+                        lastName = result.LastName,
+                        designation = result.Designation,
+                        mobile = result.Mobile,
+                        doj = result.DOJ,
+                        IsSystemAccess = result.IsSystemAccess
+                    };
+                    return loggedInUserDto;
+                }
+                return null;
+            }
+            catch(Exception ex)
+            {
+
             }
             return null;
         }

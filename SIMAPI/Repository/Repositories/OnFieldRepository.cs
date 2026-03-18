@@ -40,7 +40,7 @@ namespace SIMAPI.Repository.Repositories
             return await ExecuteStoredProcedureAsync<OnFieldActivationModel>("exec [dbo].[OnField_Activation] @shopId, @userId, @fromDate, @toDate, @isInstantActivation", sqlParameters);
         }
 
-        public async Task<List<dynamic>> OnFieldGivenVSActivationListync(GetReportRequest request)
+        public async Task<List<List<dynamic>>> OnFieldGivenVSActivationListync(GetReportRequest request)
         {
             var sqlParameters = new[]
              {
@@ -48,11 +48,11 @@ namespace SIMAPI.Repository.Repositories
                 new SqlParameter("@fromDate",request.fromDate),
                 new SqlParameter("@toDate", request.toDate),
             };
-            return await GetDataSet("OnField_GivenVsActivations", sqlParameters);
+            return await GetDataSetAsync("OnField_GivenVsActivations", sqlParameters);
             //return await ExecuteStoredProcedureAsync<OnFieldGivenVsActivation>("exec [dbo].[OnField_GivenVsActivations] @shopId, @fromDate, @toDate", sqlParameters);
         }
 
-        public async Task<List<dynamic>> OnFieldSimConversionListAsync(GetReportRequest request)
+        public async Task<List<List<dynamic>>> OnFieldSimConversionListAsync(GetReportRequest request)
         {
             var sqlParameters = new[]
              {
@@ -60,7 +60,7 @@ namespace SIMAPI.Repository.Repositories
                 new SqlParameter("@fromDate",request.fromDate),
                 new SqlParameter("@toDate", request.toDate),
             };
-            return await GetDataSet("Get_Retailer_Stock_Conversion_Report", sqlParameters);
+            return await GetDataSetAsync("Get_Retailer_Stock_Conversion_Report", sqlParameters);
             //return await ExecuteStoredProcedureAsync<OnFieldGivenVsActivation>("exec [dbo].[OnField_GivenVsActivations] @shopId, @fromDate, @toDate", sqlParameters);
         }
 
@@ -99,9 +99,9 @@ namespace SIMAPI.Repository.Repositories
             var list = await _context.Set<VwOrders>()
                 .Where(w => w.ShopId == shopId
                 && w.IsHide == false
-                && (w.OrderStatusId != (int)EnumOrderStatus.Paid &&  w.OrderStatusId != (int)EnumOrderStatus.CCA
+                && (w.OrderStatusId != (int)EnumOrderStatus.Paid && w.OrderStatusId != (int)EnumOrderStatus.CCA
                 && w.OrderStatusId != (int)EnumOrderStatus.CCM & w.OrderStatusId != (int)EnumOrderStatus.Cancelled)
-                && (w.PaymentMethod == EnumOrderPaymentMethod.COD.ToString() 
+                && (w.PaymentMethod == EnumOrderPaymentMethod.COD.ToString()
                 || w.PaymentMethod == EnumOrderPaymentMethod.AC.ToString()
                 || w.PaymentMethod == EnumOrderPaymentMethod.SaleOrReturn.ToString()
                 ))

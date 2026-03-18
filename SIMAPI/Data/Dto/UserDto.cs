@@ -20,8 +20,6 @@ namespace SIMAPI.Data.Dto
         public string? Designation { get; set; }
         public string? NickName { get; set; }
         public short Status { get; set; }
-        public bool IsMcomAccess { get; set; }
-        public bool IsLeapAccess { get; set; }
         public IFormFile? UserImageFile { get; set; }
         public int? CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }

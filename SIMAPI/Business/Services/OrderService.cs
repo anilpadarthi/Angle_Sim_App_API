@@ -448,7 +448,7 @@ namespace SIMAPI.Business.Services
 
             bool isRedemed = false;
             var optInType = "";
-            if (request.PaymentMode == "CommissionCheque" || request.PaymentMode == "PhysicalCC")
+            if (request.PaymentMode == "CommissionCheque")
             {
                 var commisionHistoryDetails = await _commissionRepository.GetCommissionHistoryDetailsAsync(Convert.ToInt32(request.ReferenceNumber));
                 if (commisionHistoryDetails != null)
@@ -458,7 +458,7 @@ namespace SIMAPI.Business.Services
                 }
             }
 
-            if (request.PaymentMode == "Other" && !string.IsNullOrEmpty(request.ReferenceNumber))
+            if ((request.PaymentMode == "Other" || request.PaymentMode == "PhysicalCC") && !string.IsNullOrEmpty(request.ReferenceNumber))
             {
                 var availableChequeList = await _commissionRepository.VerifyCommissionChequeDetails(request.ShopId, request.ReferenceNumber);
                 if (availableChequeList == null || !availableChequeList.Any())
@@ -483,7 +483,7 @@ namespace SIMAPI.Business.Services
                 obj.PaymentDate = DateTime.Now;
                 obj.CreatedDate = DateTime.Now;
                 obj.OrderId = request.OrderId;
-                obj.CollectedStatus = request.PaymentMode == "CommissionCheque" ? EnumOrderStatus.PPS.ToString() : EnumOrderStatus.PPA.ToString();
+                obj.CollectedStatus = request.PaymentMode == "CommissionCheque" || request.loggedInUserRole.Contains("Admin") ? EnumOrderStatus.PPS.ToString() : EnumOrderStatus.PPA.ToString();
                 obj.PaymentMode = request.PaymentMode;
                 obj.UserId = request.UserId;
                 obj.Status = (short)EnumStatus.Active;
@@ -494,6 +494,7 @@ namespace SIMAPI.Business.Services
                 _orderRepository.Add(obj);
                 await _context.SaveChangesAsync();
                 request.OrderPaymentId = obj.OrderPaymentId;
+
                 if (request.PaymentMode == "CommissionCheque")
                 {
                     var commisionHistoryDetails = await _commissionRepository.GetCommissionHistoryDetailsAsync(Convert.ToInt32(request.ReferenceNumber));

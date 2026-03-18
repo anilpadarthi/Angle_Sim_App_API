@@ -175,6 +175,22 @@
   },
   {
     "ContainingType": "SIMAPI.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/Auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SIMAPI.Data.Models.Login.TokenRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SIMAPI.Controllers.AuthController",
     "Method": "Refresh",
     "RelativePath": "api/Auth/refresh",
     "HttpMethod": "POST",
@@ -182,8 +198,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "SIMAPI.Data.Models.Login.RefreshRequestDto",
+        "Name": "request",
+        "Type": "SIMAPI.Data.Models.Login.TokenRequest",
         "IsRequired": true
       }
     ],
@@ -200,6 +216,22 @@
       {
         "Name": "dto",
         "Type": "SIMAPI.Data.Models.Login.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SIMAPI.Controllers.BulkUploadController",
+    "Method": "DownloadTargetData",
+    "RelativePath": "api/BulkUpload/DownloadTargetData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SIMAPI.Data.Dto.GetReportRequest",
         "IsRequired": true
       }
     ],
@@ -623,6 +655,22 @@
   },
   {
     "ContainingType": "SIMAPI.Controllers.DashboardController",
+    "Method": "GetNetworkWiseInstantActivations",
+    "RelativePath": "api/Dashboard/GetNetworkWiseInstantActivations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SIMAPI.Data.Dto.GetReportRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SIMAPI.Controllers.DashboardController",
     "Method": "GetSimAllocationReport",
     "RelativePath": "api/Dashboard/GetSimAllocationReport",
     "HttpMethod": "POST",
@@ -641,6 +689,22 @@
     "ContainingType": "SIMAPI.Controllers.DashboardController",
     "Method": "GetUserWiseAccessoriesKPIReport",
     "RelativePath": "api/Dashboard/GetUserWiseAccessoriesKPIReport",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SIMAPI.Data.Dto.GetReportRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SIMAPI.Controllers.DashboardController",
+    "Method": "GetUserWiseAccessoriesSales",
+    "RelativePath": "api/Dashboard/GetUserWiseAccessoriesSales",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -909,6 +973,22 @@
     "ContainingType": "SIMAPI.Controllers.LookUpController",
     "Method": "GetAvailableShopCommissionCheques",
     "RelativePath": "api/LookUp/GetAvailableShopCommissionCheques",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shopId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SIMAPI.Controllers.LookUpController",
+    "Method": "GetAvailableShopPhysicalCommissionCheques",
+    "RelativePath": "api/LookUp/GetAvailableShopPhysicalCommissionCheques",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1553,12 +1633,22 @@
         "IsRequired": false
       },
       {
+        "Name": "loggedInUserRole",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "PaymentMode",
         "Type": "System.String",
         "IsRequired": false
       },
       {
         "Name": "ReferenceNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ChequeNumber",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -2649,6 +2739,22 @@
   },
   {
     "ContainingType": "SIMAPI.Controllers.ReportController",
+    "Method": "GetMonthlyInstantActivationDetails",
+    "RelativePath": "api/Report/GetMonthlyInstantActivationDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SIMAPI.Data.Dto.GetReportRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SIMAPI.Controllers.ReportController",
     "Method": "GetMonthlyShopActivations",
     "RelativePath": "api/Report/GetMonthlyShopActivations",
     "HttpMethod": "POST",
@@ -2922,6 +3028,11 @@
         "IsRequired": false
       },
       {
+        "Name": "ShopOwnerName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "ShopEmail",
         "Type": "System.String",
         "IsRequired": false
@@ -2962,8 +3073,8 @@
         "IsRequired": false
       },
       {
-        "Name": "IsMobileShop",
-        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Name": "CommissionType",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -3358,6 +3469,11 @@
         "IsRequired": false
       },
       {
+        "Name": "ShopOwnerName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "ShopEmail",
         "Type": "System.String",
         "IsRequired": false
@@ -3398,8 +3514,8 @@
         "IsRequired": false
       },
       {
-        "Name": "IsMobileShop",
-        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Name": "CommissionType",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -4152,18 +4268,13 @@
         "IsRequired": false
       },
       {
+        "Name": "NickName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Status",
         "Type": "System.Int16",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsMcomAccess",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsLeapAccess",
-        "Type": "System.Boolean",
         "IsRequired": false
       },
       {
@@ -4439,18 +4550,13 @@
         "IsRequired": false
       },
       {
+        "Name": "NickName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Status",
         "Type": "System.Int16",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsMcomAccess",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsLeapAccess",
-        "Type": "System.Boolean",
         "IsRequired": false
       },
       {
@@ -4626,18 +4732,13 @@
         "IsRequired": false
       },
       {
+        "Name": "NickName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Status",
         "Type": "System.Int16",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsMcomAccess",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsLeapAccess",
-        "Type": "System.Boolean",
         "IsRequired": false
       },
       {
@@ -4713,6 +4814,27 @@
       {
         "Name": "UserDocuments",
         "Type": "System.Collections.Generic.List\u00601[[SIMAPI.Data.Dto.UserDocumentDto, SIMAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SIMAPI.Controllers.UserController",
+    "Method": "UpdateUserSystemAccess",
+    "RelativePath": "api/User/UpdateUserSystemAccess",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "isSystemAccess",
+        "Type": "System.Boolean",
         "IsRequired": false
       }
     ],

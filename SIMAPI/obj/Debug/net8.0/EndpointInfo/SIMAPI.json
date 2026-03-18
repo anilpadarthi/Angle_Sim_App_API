@@ -292,17 +292,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequestDto"
+                "$ref": "#/components/schemas/TokenRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequestDto"
+                "$ref": "#/components/schemas/TokenRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RefreshRequestDto"
+                "$ref": "#/components/schemas/TokenRequest"
               }
             }
           }
@@ -334,6 +334,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenRequest"
               }
             }
           }
@@ -382,6 +413,37 @@
                 "ImportFile": {
                   "style": "form"
                 }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BulkUpload/DownloadTargetData": {
+      "post": {
+        "tags": [
+          "BulkUpload"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
               }
             }
           }
@@ -942,6 +1004,37 @@
         }
       }
     },
+    "/api/Dashboard/GetNetworkWiseInstantActivations": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Dashboard/GetSimAllocationReport": {
       "post": {
         "tags": [
@@ -974,6 +1067,37 @@
       }
     },
     "/api/Dashboard/GetUserWiseActivations": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dashboard/GetUserWiseAccessoriesSales": {
       "post": {
         "tags": [
           "Dashboard"
@@ -1669,6 +1793,28 @@
       }
     },
     "/api/LookUp/GetAvailableShopCommissionCheques": {
+      "get": {
+        "tags": [
+          "LookUp"
+        ],
+        "parameters": [
+          {
+            "name": "shopId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LookUp/GetAvailableShopPhysicalCommissionCheques": {
       "get": {
         "tags": [
           "LookUp"
@@ -2948,10 +3094,16 @@
                   "Comments": {
                     "type": "string"
                   },
+                  "loggedInUserRole": {
+                    "type": "string"
+                  },
                   "PaymentMode": {
                     "type": "string"
                   },
                   "ReferenceNumber": {
+                    "type": "string"
+                  },
+                  "ChequeNumber": {
                     "type": "string"
                   },
                   "Amount": {
@@ -2983,10 +3135,16 @@
                 "Comments": {
                   "style": "form"
                 },
+                "loggedInUserRole": {
+                  "style": "form"
+                },
                 "PaymentMode": {
                   "style": "form"
                 },
                 "ReferenceNumber": {
+                  "style": "form"
+                },
+                "ChequeNumber": {
                   "style": "form"
                 },
                 "Amount": {
@@ -4481,6 +4639,37 @@
         }
       }
     },
+    "/api/Report/GetMonthlyInstantActivationDetails": {
+      "post": {
+        "tags": [
+          "Report"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Retailer/GetActvations": {
       "post": {
         "tags": [
@@ -4690,6 +4879,9 @@
                   "PayableName": {
                     "type": "string"
                   },
+                  "ShopOwnerName": {
+                    "type": "string"
+                  },
                   "ShopEmail": {
                     "type": "string"
                   },
@@ -4714,8 +4906,8 @@
                   "TopupSystemId": {
                     "type": "string"
                   },
-                  "IsMobileShop": {
-                    "type": "boolean"
+                  "CommissionType": {
+                    "type": "string"
                   },
                   "Status": {
                     "type": "integer",
@@ -4792,6 +4984,9 @@
                 "PayableName": {
                   "style": "form"
                 },
+                "ShopOwnerName": {
+                  "style": "form"
+                },
                 "ShopEmail": {
                   "style": "form"
                 },
@@ -4816,7 +5011,7 @@
                 "TopupSystemId": {
                   "style": "form"
                 },
-                "IsMobileShop": {
+                "CommissionType": {
                   "style": "form"
                 },
                 "Status": {
@@ -4906,6 +5101,9 @@
                   "PayableName": {
                     "type": "string"
                   },
+                  "ShopOwnerName": {
+                    "type": "string"
+                  },
                   "ShopEmail": {
                     "type": "string"
                   },
@@ -4930,8 +5128,8 @@
                   "TopupSystemId": {
                     "type": "string"
                   },
-                  "IsMobileShop": {
-                    "type": "boolean"
+                  "CommissionType": {
+                    "type": "string"
                   },
                   "Status": {
                     "type": "integer",
@@ -5008,6 +5206,9 @@
                 "PayableName": {
                   "style": "form"
                 },
+                "ShopOwnerName": {
+                  "style": "form"
+                },
                 "ShopEmail": {
                   "style": "form"
                 },
@@ -5032,7 +5233,7 @@
                 "TopupSystemId": {
                   "style": "form"
                 },
-                "IsMobileShop": {
+                "CommissionType": {
                   "style": "form"
                 },
                 "Status": {
@@ -6527,15 +6728,12 @@
                   "Designation": {
                     "type": "string"
                   },
+                  "NickName": {
+                    "type": "string"
+                  },
                   "Status": {
                     "type": "integer",
                     "format": "int32"
-                  },
-                  "IsMcomAccess": {
-                    "type": "boolean"
-                  },
-                  "IsLeapAccess": {
-                    "type": "boolean"
                   },
                   "UserImageFile": {
                     "type": "string",
@@ -6641,13 +6839,10 @@
                 "Designation": {
                   "style": "form"
                 },
+                "NickName": {
+                  "style": "form"
+                },
                 "Status": {
-                  "style": "form"
-                },
-                "IsMcomAccess": {
-                  "style": "form"
-                },
-                "IsLeapAccess": {
                   "style": "form"
                 },
                 "UserImageFile": {
@@ -6761,15 +6956,12 @@
                   "Designation": {
                     "type": "string"
                   },
+                  "NickName": {
+                    "type": "string"
+                  },
                   "Status": {
                     "type": "integer",
                     "format": "int32"
-                  },
-                  "IsMcomAccess": {
-                    "type": "boolean"
-                  },
-                  "IsLeapAccess": {
-                    "type": "boolean"
                   },
                   "UserImageFile": {
                     "type": "string",
@@ -6875,13 +7067,10 @@
                 "Designation": {
                   "style": "form"
                 },
+                "NickName": {
+                  "style": "form"
+                },
                 "Status": {
-                  "style": "form"
-                },
-                "IsMcomAccess": {
-                  "style": "form"
-                },
-                "IsLeapAccess": {
                   "style": "form"
                 },
                 "UserImageFile": {
@@ -7186,25 +7375,18 @@
             }
           },
           {
+            "name": "NickName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Status",
             "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
-            }
-          },
-          {
-            "name": "IsMcomAccess",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "IsLeapAccess",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
             }
           },
           {
@@ -7478,6 +7660,35 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/UpdateUserSystemAccess": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "isSystemAccess",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -8094,6 +8305,10 @@
             "type": "string",
             "nullable": true
           },
+          "orderedBy": {
+            "type": "string",
+            "nullable": true
+          },
           "referenceNumber": {
             "type": "integer",
             "format": "int32",
@@ -8337,16 +8552,6 @@
         },
         "additionalProperties": false
       },
-      "RefreshRequestDto": {
-        "type": "object",
-        "properties": {
-          "refreshToken": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ResetPasswordModel": {
         "type": "object",
         "properties": {
@@ -8373,6 +8578,10 @@
             "format": "int32"
           },
           "shopName": {
+            "type": "string",
+            "nullable": true
+          },
+          "shopOwnerName": {
             "type": "string",
             "nullable": true
           },
@@ -8567,6 +8776,16 @@
           "transactionDate": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenRequest": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

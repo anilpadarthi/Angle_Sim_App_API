@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.VariantTypes;
-using SIMAPI.Business.Helper.PDF;
+﻿using SIMAPI.Business.Helper.PDF;
 using SIMAPI.Data.Models.OrderListModels;
 using System.Net;
 using System.Net.Mail;

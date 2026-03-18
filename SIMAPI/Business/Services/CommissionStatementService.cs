@@ -164,10 +164,8 @@ namespace SIMAPI.Business.Services
             byte[] result = null;
 
             CommissionStatementPDF commissionStatementPDF = new CommissionStatementPDF();
-            if (request.reportType == "NONVAT")
-                result = await commissionStatementPDF.GeneratePDFStatement(_commissionStatementRepository, request);
-            else
-                result = await commissionStatementPDF.GenerateVATPDFStatement(_commissionStatementRepository, request);
+            result = await commissionStatementPDF.GeneratePDFStatement(_commissionStatementRepository, request);
+
             if (result != null && result.Length > 0)
             {
                 response = Utility.CreateResponse(result, HttpStatusCode.OK);

@@ -82,6 +82,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 
 
+
 builder.Services.AddScoped<IAreaRepository, AreaRepository>();
 builder.Services.AddScoped<IBulkUploadRepository, BulkUploadRepository>();
 builder.Services.AddScoped<ILookUpRepository, LookUpRepository>();
